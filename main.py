@@ -1,6 +1,11 @@
 import pygame as pg
 import moderngl as mgl
 import sys
+from model import *
+from camera import Camera
+from light import Light
+from mesh import Mesh
+from scene import Scene
 
 class GraphicsEngine:
     #El método __init__(self, win_size=(800, 600)) en la clase GraphicsEngine es el 
@@ -23,24 +28,39 @@ class GraphicsEngine:
         #Flags controla qué tipo de pantalla deseas
         #OPENGL indica que se utilizará OpenGL para renderizar en la ventana, mientras que DOUBLEBUF habilita el doble búfer, lo que reduce el parpadeo al renderizar.
         pg.display.set_mode(self.WIN_SIZE, flags=pg.OPENGL | pg.DOUBLEBUF)
-    
+        # configuracion del mouse
+        pg.event.set_grab(True)
+        pg.mouse.set_visible(False)
         #Crea un contexto de OpenGL utilizando ModernGL, proporcionando un entorno para 
         #realizar operaciones gráficas con OpenGL en la aplicación, como renderizado de objetos, 
         # configuración de shaders y manipulación de texturas.
         self.ctx = mgl.create_context()
-    
+        #self.ctx.front_face = 'cw'
+        self.ctx.enable(flags=mgl.DEPTH_TEST | mgl.CULL_FACE)
        #crea un objeto de reloj pygame, permitiendo controlar el tiempo dentro del juego, 
        # como limitar la velocidad de fotogramas o calcular el tiempo transcurrido entre 
        # fotogramas para mantener una animación suave y consistente
         self.clock = pg.time.Clock()
+        self.time = 0
+        self.delta_time = 0
+        #luz
+        self.light = Light()
+       # camara
+        self.camera = Camera(self)
+       # Mesh
+        self.mesh = Mesh(self)
+       # escena
+        self.scene = Scene(self)
+        
         
     def check_events(self):
         # Gestiona los eventos de entrada del usuario, permitiendo que 
         # la aplicación responda a acciones como cerrar la ventana.
         #Los eventos son almacenados en una cola
         for event in pg.event.get():
-            print(event.type)
+
             if event.type == pg.QUIT or (event.type == pg.KEYDOWN and event.key == pg.K_ESCAPE):
+                self.mesh.destroy()
                 pg.quit()
                 sys.exit()
         
@@ -48,21 +68,28 @@ class GraphicsEngine:
     # luego actualizarla para mostrar los cambios realizados en la escena gráfica    
     def render(self):
         #limpiamos la ventana y le damos un color nuevo a traves del contexto de opengl
-        self.ctx.clear(color=(0.8, 0.6, 0.18))
+        self.ctx.clear(color=(0.08, 0.16, 0.18))
+        # renderizacion de la escena 
+        self.scene.render()
         #Luego actualizamos la ventana de pygame con flip
         pg.display.flip()
             
+    def get_time(self):
+        self.time = pg.time.get_ticks() * 0.001
+        
     # bucle principal de la aplicación. Similiar a una función main
     def run(self):
         #Bcule infinito
         while True:
+            self.get_time()
             #Se llama al metodo check events
             self.check_events()
+            self.camera.update()
             #Al render para cambiar el color
             self.render()
             #A traves de clock que nos permite controlar el tiempo de nuestro juego
             #Limitamos los fps con tick
-            self.clock.tick(60)
+            self.delta_time = self.clock.tick(60)
                 
 if __name__ == '__main__':
     # crea una instancia de la clase GraphicsEngine
