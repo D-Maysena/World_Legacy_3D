@@ -30,6 +30,7 @@ vec3 getLight(vec3 color){
 
     vec3 viewDir = normalize(camPos - fragPos);
     vec3 reflectDir = reflect(-lightDir, Normal);
+    
     float spec = pow(max(dot(viewDir, reflectDir), 0), 32);
     vec3 specular = spec * light.Is;
 
@@ -39,10 +40,15 @@ vec3 getLight(vec3 color){
 
 void main() 
 {
+    float gamma = 2.2;
     //toma un color predefinido y lo asigna al atributo de salida fragColor, que se utilizará para determinar 
     //el color final de cada fragmento en la pantalla.
     //vec3 color = vec3(uv_0, 0);  // Rojo
     vec3 color = texture(u_texture_0, uv_0).rgb;
+    
+    color = pow(color, vec3(gamma));
+    
     color = getLight(color);
+    color = pow(color, 1 / vec3(gamma));
     fragColor = vec4(color, 1.0); // Asigna el color al fragmento
 }
