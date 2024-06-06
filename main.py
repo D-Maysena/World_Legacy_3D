@@ -4,14 +4,17 @@ import sys
 from model import *
 from camera import Camera
 from light import Light
+from mesh import Mesh
+from scene import Scene
 
 class GraphicsEngine:
     #El método __init__(self, win_size=(800, 600)) en la clase GraphicsEngine es el 
     # constructor que inicializa una nueva instancia de la clase, configurando Pygame y estableciendo el tamaño de la ventana con un valor por defecto de (800, 600)
-    def __init__(self, win_size=(800, 600)):
+    def __init__(self, win_size=(900, 650)):
         # Inicializa el módulo Pygame
         pg.init()
-    
+      # Inicializa el mixer de Pygame
+        pg.mixer.init()
         # Establece el tamaño de la ventana
         self.WIN_SIZE = win_size
     
@@ -49,9 +52,16 @@ class GraphicsEngine:
         self.light = Light()
         #Camara
         self.camera = Camera(self)
+        
+        self.mesh = Mesh(self)
         #Escene
         #crea una instancia de la clase Triangle y la asigna a la variable self.scene
-        self.scene = Cube(self)
+        self.scene = Scene(self)
+        
+        # Cargar y reproducir sonido
+        
+        self.sound = pg.mixer.Sound('audios/Kanye.mp3')
+        self.sound.play()
         
     def check_events(self):
         # Gestiona los eventos de entrada del usuario, permitiendo que 
@@ -61,7 +71,7 @@ class GraphicsEngine:
             #print(event.type)
             if event.type == pg.QUIT or (event.type == pg.KEYDOWN and event.key == pg.K_ESCAPE):
                 #Cuando cerramos el programa liberamos memroai
-                self.scene.destroy()
+                self.mesh.destroy()
                 pg.quit()
                 sys.exit()
         
@@ -69,7 +79,7 @@ class GraphicsEngine:
     # luego actualizarla para mostrar los cambios realizados en la escena gráfica    
     def render(self):
         #limpiamos la ventana y le damos un color nuevo a traves del contexto de opengl
-        self.ctx.clear(color=(0.0, 0.0, 0))
+        self.ctx.clear(color=(0.1, 0.3, 0.2))
         #Una vez que se cargo la ventana con el color, renderizamos el objeto
         self.scene.render()
         #Luego actualizamos la ventana de pygame con flip
@@ -77,7 +87,7 @@ class GraphicsEngine:
         
             
     def get_time(self):
-        self.time = pg.time.get_ticks() * 0.001     
+        self.time = pg.time.get_ticks() * 0.0005     
             
     # bucle principal de la aplicación. Similiar a una función main
     def run(self):

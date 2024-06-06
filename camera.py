@@ -6,9 +6,9 @@ NEAR = 0.1
 FAR = 100
 
 #Velocidad de la cámara
-SPEED = 0.01
+SPEED = 0.04
 
-SENSITIVITY  = 0.05
+SENSITIVITY  = 0.03
 
 class Camera:
     #Para poder simular una cámara necsitamos determinar la matriz de vista como 
@@ -95,4 +95,3 @@ class Camera:
         #NEAR: distancia desde la cámara al plano de recorte más cercano 
         #FAR: distancia desde la cámara al plano de recorte más lejano
         return glm.perspective(glm.radians(FOV), self.aspect_radio, NEAR, FAR)
-         

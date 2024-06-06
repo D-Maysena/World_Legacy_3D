@@ -2,10 +2,9 @@
 
 //define un atributo de entrada llamado in_position, que espera recibir vectores de 3
 // componentes y está asociado con la ubicación de índice 0
-layout (location = 1) in vec3 in_normal;
 
 layout (location = 0) in vec2 in_texcoord_0;
-
+layout (location = 1) in vec3 in_normal;
 layout (location = 2) in vec3 in_position;
 
 out vec2 uv_0;
@@ -21,11 +20,9 @@ uniform mat4 m_model;
 
 
 void main() {
-
-
     uv_0 = in_texcoord_0;
     fragPos = vec3(m_model * vec4(in_position, 1.0));
-    normal = mat3(m_model) * normalize(in_normal);
+    normal = mat3(transpose(inverse(m_model))) * normalize(in_normal);
     // toma las coordenadas del vértice proporcionadas por el atributo de entrada in_position, las 
     //convierte en un vector de coordenadas homogéneas y las asigna a gl_Position
     gl_Position = m_proj * m_view * m_model * vec4(in_position, 1.0);
