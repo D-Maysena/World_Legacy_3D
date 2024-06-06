@@ -14,9 +14,15 @@ class Scene:
         app = self.app
         add = self.add_object
         
-        add(Cube(app))
-        add(Cube(app, tex_id=1, pos=(-2.5, 0, 0)))
-        add(Cube(app, tex_id=2, pos=(2.5, 0, 0)))
+        n, s = 80, 2
+        for x in range(-n, n, s):
+            for z in range(-n, n, s):
+                add(Cube(app, pos=(x, -s, z)))
+                
+        add(Estatua(app, pos=(0, -1, -10)))
+        add(Estatua2(app, pos=(5, -1, -10)))
+        
+        
         
     def render(self):
         for obj in self.objects: 
