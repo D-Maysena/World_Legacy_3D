@@ -13,7 +13,8 @@ class GraphicsEngine:
     def __init__(self, win_size=(900, 650)):
         # Inicializa el módulo Pygame
         pg.init()
-    
+      # Inicializa el mixer de Pygame
+        pg.mixer.init()
         # Establece el tamaño de la ventana
         self.WIN_SIZE = win_size
     
@@ -57,7 +58,10 @@ class GraphicsEngine:
         #crea una instancia de la clase Triangle y la asigna a la variable self.scene
         self.scene = Scene(self)
         
-
+        # Cargar y reproducir sonido
+        
+        self.sound = pg.mixer.Sound('audios/Kanye.mp3')
+        self.sound.play()
         
     def check_events(self):
         # Gestiona los eventos de entrada del usuario, permitiendo que 

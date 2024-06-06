@@ -19,6 +19,8 @@ class VAO:
         self.vaos['coliseo'] = self.get_vao(
             program=self.program.programs['default'],
             vbo = self.vbo.vbos['coliseo'])
+        
+       
  
 
     def get_vao(self, program, vbo):

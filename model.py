@@ -3,7 +3,7 @@ import glm
 import moderngl as mgl
 
 class BaseModel:
-    def __init__(self, app, vao_name, tex_id, pos=(0,0,0), rot=(0,0,0), scale=(1,1,1)):
+    def __init__(self, app, vao_name, tex_id, pos=(0,0,0), rot=(0,0,0), scale=(1,1,1), radius=1.0):
         self.app = app
         #Posición del objeto
         self.pos = pos
@@ -15,6 +15,7 @@ class BaseModel:
         self.vao = app.mesh.vao.vaos[vao_name]
         self.program = self.vao.program
         self.camera = self.app.camera
+        self.radius = radius  # Almacenar el radio como un atributo
         
     def update(self):
         ...
@@ -38,8 +39,8 @@ class BaseModel:
     
 
 class Cube(BaseModel):
-    def __init__(self, app, vao_name='cube', tex_id=0, pos=(0,0,0), rot=(0,0,0), scale=(1,1,1)):
-        super().__init__(app, vao_name, tex_id, pos, rot, scale)
+    def __init__(self, app, vao_name='cube', tex_id=0, pos=(0,0,0), rot=(0,0,0), scale=(1,1,1), radius=1.0):
+        super().__init__(app, vao_name, tex_id, pos, rot, scale, radius)
         self.on_init()
     
     def update(self):
@@ -96,8 +97,9 @@ class Eiffel(BaseModel):
 
         
 class Coliseo(BaseModel):
-    def __init__(self, app, vao_name='coliseo', tex_id='coliseo', pos=(0,0,0), rot=(-90,0,0), scale=(1,1,1)):
-        super().__init__(app, vao_name, tex_id, pos, rot, scale)
+    def __init__(self, app, vao_name='coliseo', tex_id='coliseo', pos=(0,0,0), rot=(-90,0,0), scale=(1,1,1), radius=300.0):
+        super().__init__(app, vao_name, tex_id, pos, rot, scale, radius)
+        
         self.on_init()
     
     def update(self):
@@ -123,8 +125,10 @@ class Coliseo(BaseModel):
         self.program['light.Id'].write(self.app.light.Id)
         self.program['light.Is'].write(self.app.light.Is) 
         
+        
+        
 class Museo(BaseModel):
-    def __init__(self, app, vao_name='museo', tex_id='coliseo', pos=(0,0,0), rot=(-90,0,0), scale=(1,1,1)):
+    def __init__(self, app, vao_name='museo', tex_id='museo', pos=(0,0,0), rot=(-90,0,0), scale=(1,1,1)):
         super().__init__(app, vao_name, tex_id, pos, rot, scale)
         self.on_init()
     

@@ -19,7 +19,8 @@ class Scene:
           #      add(Cube(app, pos=(x, -s, z)))
         
         add(Coliseo(app, pos=(-20,-2, -10), scale=(0.002, 0.002, 0.002)))
-        add(Eiffel(app, pos=(20,-2, -10), scale=(0.0006, 0.0006, 0.0006)))
+        #add(Eiffel(app, pos=(20,-2, -10), scale=(0.0006, 0.0006, 0.0006)))
+        add(Cube(app, pos=(50,-2, -10), scale=(10,10,10)))
         
         
     def render(self):
