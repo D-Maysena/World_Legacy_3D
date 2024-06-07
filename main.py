@@ -29,17 +29,18 @@ class GraphicsEngine:
         #Flags controla qué tipo de pantalla deseas
         #OPENGL indica que se utilizará OpenGL para renderizar en la ventana, mientras que DOUBLEBUF habilita el doble búfer, lo que reduce el parpadeo al renderizar.
         pg.display.set_mode(self.WIN_SIZE, flags=pg.OPENGL | pg.DOUBLEBUF)
-    
         #Ajustes del mouse
         # captura (o "agarra") el cursor del ratón dentro de la ventana de Pygame. Esto significa que el cursor no podrá salir de la ventana mientras esta esté activa
         pg.event.set_grab(True)
         pg.mouse.set_visible(False)
     
     
+
         #Crea un contexto de OpenGL utilizando ModernGL, proporcionando un entorno para 
         #realizar operaciones gráficas con OpenGL en la aplicación, como renderizado de objetos, 
         # configuración de shaders y manipulación de texturas.
         self.ctx = mgl.create_context()
+
         #Prueba de Profundidad, asegurando el ordenamiento correcto de los objetos en la escena 3D, y el Descarte de Caras, optimizando el renderizado al evitar dibujar caras no visibles.
         self.ctx.enable(flags=mgl.DEPTH_TEST | mgl.CULL_FACE)
        #crea un objeto de reloj pygame, permitiendo controlar el tiempo dentro del juego, 
@@ -48,6 +49,7 @@ class GraphicsEngine:
         self.clock = pg.time.Clock()
         self.time = 0
         self.delta_time = 0
+
         #Light
         self.light = Light()
         #Camara
@@ -62,6 +64,7 @@ class GraphicsEngine:
         
         self.sound = pg.mixer.Sound('audios/Kanye.mp3')
         self.sound.play()
+
         
     def check_events(self):
         # Gestiona los eventos de entrada del usuario, permitiendo que 
@@ -81,6 +84,7 @@ class GraphicsEngine:
         #limpiamos la ventana y le damos un color nuevo a traves del contexto de opengl
         self.ctx.clear(color=(0.1, 0.3, 0.2))
         #Una vez que se cargo la ventana con el color, renderizamos el objeto
+
         self.scene.render()
         #Luego actualizamos la ventana de pygame con flip
         pg.display.flip()
@@ -89,6 +93,9 @@ class GraphicsEngine:
     def get_time(self):
         self.time = pg.time.get_ticks() * 0.0005     
             
+    def get_time(self):
+        self.time = pg.time.get_ticks() * 0.001
+        
     # bucle principal de la aplicación. Similiar a una función main
     def run(self):
         #Bcule infinito 
@@ -102,7 +109,7 @@ class GraphicsEngine:
             #A traves de clock que nos permite controlar el tiempo de nuestro juego
             #Limitamos los fps con tick
             self.delta_time =  self.clock.tick(60)
-                
+       
 if __name__ == '__main__':
     # crea una instancia de la clase GraphicsEngine
     app = GraphicsEngine()

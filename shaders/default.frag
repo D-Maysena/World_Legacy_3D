@@ -5,7 +5,6 @@ layout (location = 0) out vec4 fragColor;
 in vec2 uv_0;
 in vec3 normal;
 in vec3 fragPos;
-
 struct Light {
     vec3 position;
     vec3 Ia;
@@ -24,11 +23,9 @@ vec3 getLight(vec3 color){
     //Luz de ambiente
     vec3 ambient = light.Ia;
 
-
     vec3 lightDir = normalize(light.position - fragPos);
     float diff = max(0, dot(lightDir, Normal));
     vec3 diffuse = diff * light.Id;
-
     vec3 viewDir = normalize(camPos - fragPos);
     vec3 reflectDir = reflect(-lightDir, Normal);
     
@@ -37,7 +34,6 @@ vec3 getLight(vec3 color){
 
     return color * (ambient + diffuse + specular );
 }
-
 
 void main() 
 {
@@ -53,3 +49,5 @@ void main()
     color = pow(color, 1 / vec3(gamma));
     fragColor = vec4(color, 1.0); // Asigna el color al fragmento
 }
+
+

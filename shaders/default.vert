@@ -15,6 +15,7 @@ out vec3 fragPos;
 //dos uniformes de tipo matriz (mat4), m_proj y m_view. Estos uniformes se utilizan 
 //para almacenar las matrices de proyección (m_proj) y de vista (m_view) que se 
 //proporcionan desde la aplicación principal 
+
 uniform mat4 m_proj;
 uniform mat4 m_view;
 uniform mat4 m_model;
@@ -33,5 +34,4 @@ void main() {
     //convirtiéndolas en coordenadas de pantalla 
 }
     
-
 

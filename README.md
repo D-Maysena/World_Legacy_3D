@@ -1,4 +1,4 @@
-# Project name
+# World Legacy 3D
 
 [![Python](https://img.shields.io/badge/Python-3.10-green.svg?style=flat-square-logo=python)](https://docs.python.org/3/)
 [![OpenGL](https://img.shields.io/badge/OpenGl-3.10-green.svg?style=flat-square-logo=opengl-)](https://docs.gl/)

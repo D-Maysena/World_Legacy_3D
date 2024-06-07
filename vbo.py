@@ -2,7 +2,6 @@ import pywavefront
 import numpy as np
 import moderngl as mgl
 
-
 class VBO:
     def __init__(self, ctx):
         self.vbos = {}
@@ -11,10 +10,12 @@ class VBO:
         self.vbos['coliseo'] = ColiseoVBO(ctx)
         self.vbos['pisatower'] = PisaTowerVBO(ctx)
         self.vbos['catedral'] = CatedralVBO(ctx)
-    
+        self.vbos['estatua'] = EstatuaVBO(ctx)
+        self.vbos['estatua2'] = Estatua2VBO(ctx)
+
+
     def destroy(self):
         [vbo.destroy() for vbo in self.vbos.values()]
-
 
 class BaseVBO:
     def __init__(self, ctx):
@@ -34,12 +35,14 @@ class BaseVBO:
         self.vbo.release()
         
 
+
 class CubeVBO(BaseVBO):
     def __init__(self, ctx):
         super().__init__(ctx)
         self.format = '2f 3f 3f'
         self.attribs = ['in_texcoord_0', 'in_normal' ,'in_position']
     
+
 
     @staticmethod
     def get_data(vertices, indices):
@@ -90,6 +93,7 @@ class CubeVBO(BaseVBO):
         vertex_data = np.hstack([tex_coord_data, vertex_data])
         
         return vertex_data
+
 
 class ColiseoVBO(BaseVBO):
     def __init__(self, app):
@@ -149,6 +153,34 @@ class CatedralVBO(BaseVBO):
 
     def get_vertex_data(self):
         objs = pywavefront.Wavefront('objects/catedral/10086_saint_basil_cathedral_v1_L3.obj', cache=True, parse=True)
+        obj = objs.materials.popitem()[1]
+        vertex_data = obj.vertices
+        vertex_data = np.array(vertex_data, dtype='f4')
+        return vertex_data
+
+
+class EstatuaVBO(BaseVBO):
+    def __init__(self, app):
+        super().__init__(app)
+        self.format = '2f 3f 3f'
+        self.attribs = ['in_texcoord_0', 'in_normal', 'in_position']
+        
+    def get_vertex_data(self):
+        objs = pywavefront.Wavefront('objects/10085_egypt_sphinx_V2_L3.123cedbb80cc-eec4-4899-a587-d46dd8eff3b9/10085_egypt_sphinx_iterations-2.obj', cache=True, parse=True)
+        obj = objs.materials.popitem()[1]
+        vertex_data = obj.vertices
+        vertex_data = np.array(vertex_data, dtype='f4')
+        return vertex_data
+    
+    
+class Estatua2VBO(BaseVBO):
+    def __init__(self, app):
+        super().__init__(app)
+        self.format = '2f 3f 3f'
+        self.attribs = ['in_texcoord_0', 'in_normal', 'in_position']
+        
+    def get_vertex_data(self):
+        objs = pywavefront.Wavefront('objects/Statue_v1_L2.123cc93d694a-81fb-4c81-8a75-7fa010dfa777/12330_Statue_v1_L2.obj', cache=True, parse=True)
         obj = objs.materials.popitem()[1]
         vertex_data = obj.vertices
         vertex_data = np.array(vertex_data, dtype='f4')

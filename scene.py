@@ -1,4 +1,5 @@
 from model import *
+
 class Scene:
     def __init__(self, app):
         self.app = app
@@ -8,6 +9,7 @@ class Scene:
     def add_object(self, obj):
         self.objects.append(obj)
     
+
     def load(self):
         app = self.app
         add = self.add_object
@@ -24,7 +26,10 @@ class Scene:
         add(PisaTower(app, pos=(0, -1, -5)))
         
         add(Catedral(app, pos=(10, -2, -5)))
+        add(Estatua(app, pos=(0, 10, -10)))
+        add(Estatua2(app, pos=(5, 10, -10)))
         
+    
     def render(self):
-        for obj in self.objects:
+        for obj in self.objects: 
             obj.render()

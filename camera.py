@@ -32,12 +32,13 @@ class Camera:
         
         #matriz de proyeccion
         self.m_proj = self.get_projection_matrix()
-      
+    
     def rotate(self):
         rel_x, rel_y = pg.mouse.get_rel()
         self.yaw += rel_x * SENSITIVITY
         self.pitch -= rel_y * SENSITIVITY
         self.pitch = max(-89, min(89, self.pitch))
+
 
     def update_camera_vectors(self):
         yaw, pitch = glm.radians(self.yaw), glm.radians(self.pitch)
@@ -50,14 +51,14 @@ class Camera:
         self.right = glm.normalize(glm.cross(self.forward, glm.vec3(0, 1, 0)))
         self.up = glm.normalize(glm.cross(self.right, self.forward))
          
-      
+
     def update(self):
         self.move()
         self.rotate()
         self.update_camera_vectors()
         self.m_view = self.get_view_matrix()
-    
-    #Cambiaremos la posición de la cámara usando las teclas
+
+    #Cambiaremos la posición de la cámara usando las teclas      
     def move(self):
         velocity = SPEED * self.app.delta_time
         keys = pg.key.get_pressed()
