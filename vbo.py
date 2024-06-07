@@ -1,7 +1,7 @@
-
 import pywavefront
 import numpy as np
 import moderngl as mgl
+
 
 class VBO:
     def __init__(self, ctx):
@@ -9,10 +9,11 @@ class VBO:
         self.vbos['cube'] = CubeVBO(ctx)
         self.vbos['eiffel'] = EiffelVBO(ctx)
         self.vbos['coliseo'] = ColiseoVBO(ctx)
-        
+        self.vbos['pisatower'] = PisaTowerVBO(ctx)
+        self.vbos['catedral'] = CatedralVBO(ctx)
+    
     def destroy(self):
         [vbo.destroy() for vbo in self.vbos.values()]
-        
 
 
 class BaseVBO:
@@ -32,12 +33,14 @@ class BaseVBO:
     def destroy(self):
         self.vbo.release()
         
+
 class CubeVBO(BaseVBO):
     def __init__(self, ctx):
         super().__init__(ctx)
         self.format = '2f 3f 3f'
         self.attribs = ['in_texcoord_0', 'in_normal' ,'in_position']
     
+
     @staticmethod
     def get_data(vertices, indices):
         data = [vertices[ind] for triangle in indices for ind in triangle]
@@ -125,5 +128,28 @@ class EiffelVBO(BaseVBO):
         return vertex_data
     
 
+class PisaTowerVBO(BaseVBO):
+    def __init__(self, app):
+        super().__init__(app)
+        self.format = '2f 3f 3f'
+        self.attribs = ['in_texcoord_0', 'in_normal', 'in_position']
+
+    def get_vertex_data(self):
+        objs = pywavefront.Wavefront('objects/pisatower/10076_pisa_tower_v1_max2009_it0.obj', cache=True, parse=True)
+        obj = objs.materials.popitem()[1]
+        vertex_data = obj.vertices
+        vertex_data = np.array(vertex_data, dtype='f4')
+        return vertex_data
         
-        
+class CatedralVBO(BaseVBO):
+    def __init__(self, app):
+        super().__init__(app)
+        self.format = '2f 3f 3f'
+        self.attribs = ['in_texcoord_0', 'in_normal', 'in_position']
+
+    def get_vertex_data(self):
+        objs = pywavefront.Wavefront('objects/catedral/10086_saint_basil_cathedral_v1_L3.obj', cache=True, parse=True)
+        obj = objs.materials.popitem()[1]
+        vertex_data = obj.vertices
+        vertex_data = np.array(vertex_data, dtype='f4')
+        return vertex_data

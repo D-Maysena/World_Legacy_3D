@@ -9,6 +9,9 @@ class Texture:
         self.textures[1] = self.get_texture(path='textures/texture.jpg')
         self.textures['eiffel'] = self.get_texture(path='objects/Eiffel/10067_Eiffel_Tower_v1_diffuse.JPG')
         self.textures['coliseo'] = self.get_texture(path='objects/Coliseo/10064_colosseum_diffuse.jpg')
+        self.textures['pisatower'] = self.get_texture(path='objects/pisatower/10076_pisa_tower_v1_diffuse.jpg')
+        self.textures['catedral'] = self.get_texture(path='objects/catedral/10086_saint_basil_cathedral_v1_diffuse.jpg')
+
         
     def get_texture(self, path):
         texture = pg.image.load(path).convert()

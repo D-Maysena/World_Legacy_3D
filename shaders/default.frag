@@ -24,6 +24,7 @@ vec3 getLight(vec3 color){
     //Luz de ambiente
     vec3 ambient = light.Ia;
 
+
     vec3 lightDir = normalize(light.position - fragPos);
     float diff = max(0, dot(lightDir, Normal));
     vec3 diffuse = diff * light.Id;

@@ -1,5 +1,4 @@
 from model import *
-
 class Scene:
     def __init__(self, app):
         self.app = app
@@ -19,9 +18,12 @@ class Scene:
           #      add(Cube(app, pos=(x, -s, z)))
         
         add(Coliseo(app, pos=(-20,-2, -10), scale=(0.002, 0.002, 0.002)))
-        #add(Eiffel(app, pos=(20,-2, -10), scale=(0.0006, 0.0006, 0.0006)))
-        add(Cube(app, pos=(50,-2, -10), scale=(10,10,10)))
+        add(Eiffel(app, pos=(20,-2, -10), scale=(0.0006, 0.0006, 0.0006)))
+        #add(Cube(app, pos=(50,-2, -10), scale=(10,10,10)))
         
+        add(PisaTower(app, pos=(0, -1, -5)))
+        
+        add(Catedral(app, pos=(10, -2, -5)))
         
     def render(self):
         for obj in self.objects:

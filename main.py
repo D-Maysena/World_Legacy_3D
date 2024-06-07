@@ -108,5 +108,3 @@ if __name__ == '__main__':
     app = GraphicsEngine()
     #llama al método run() en esa instancia, lo que inicia el bucle principal de la aplicación.
     app.run()
-        
-        
