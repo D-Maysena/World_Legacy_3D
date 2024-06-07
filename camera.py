@@ -4,7 +4,6 @@ import pygame as pg
 FOV = 50 #grados
 NEAR = 0.1
 FAR = 100
-
 #Velocidad de la cámara
 SPEED = 0.04
 
@@ -33,12 +32,12 @@ class Camera:
         #matriz de proyeccion
         self.m_proj = self.get_projection_matrix()
     
+
     def rotate(self):
         rel_x, rel_y = pg.mouse.get_rel()
         self.yaw += rel_x * SENSITIVITY
         self.pitch -= rel_y * SENSITIVITY
         self.pitch = max(-89, min(89, self.pitch))
-
 
     def update_camera_vectors(self):
         yaw, pitch = glm.radians(self.yaw), glm.radians(self.pitch)
@@ -50,7 +49,6 @@ class Camera:
         self.forward = glm.normalize(self.forward)
         self.right = glm.normalize(glm.cross(self.forward, glm.vec3(0, 1, 0)))
         self.up = glm.normalize(glm.cross(self.right, self.forward))
-         
 
     def update(self):
         self.move()
@@ -58,7 +56,6 @@ class Camera:
         self.update_camera_vectors()
         self.m_view = self.get_view_matrix()
 
-    #Cambiaremos la posición de la cámara usando las teclas      
     def move(self):
         velocity = SPEED * self.app.delta_time
         keys = pg.key.get_pressed()
@@ -96,3 +93,4 @@ class Camera:
         #NEAR: distancia desde la cámara al plano de recorte más cercano 
         #FAR: distancia desde la cámara al plano de recorte más lejano
         return glm.perspective(glm.radians(FOV), self.aspect_radio, NEAR, FAR)
+

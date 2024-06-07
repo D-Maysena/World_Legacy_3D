@@ -6,7 +6,6 @@ class ShaderProgram:
         
     def get_program(self, shader_program_name):
          # Método para obtener el programa de shader
-
         with open(f'shaders/{shader_program_name}.vert') as file:
             vertex_shader = file.read()
             
@@ -19,3 +18,5 @@ class ShaderProgram:
         return program
     def destroy(self):
         [program.release() for program in self.programs.values()]
+
+

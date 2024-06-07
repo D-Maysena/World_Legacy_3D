@@ -13,7 +13,7 @@ class Scene:
     def load(self):
         app = self.app
         add = self.add_object
-        
+    
         #n, s = 30,2
         #for x in range(-n, n, s):
          #   for z in range (-n, n, s):
@@ -28,6 +28,9 @@ class Scene:
         add(Catedral(app, pos=(10, -2, -5)))
         add(Estatua(app, pos=(0, 10, -10)))
         add(Estatua2(app, pos=(5, 10, -10)))
+        
+        add(Bigben(app, pos=(0, -2, -10)))
+        add(moai(app,pos=(-4,-2,-10)))
         
     
     def render(self):

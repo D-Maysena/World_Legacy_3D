@@ -1,6 +1,6 @@
-import pywavefront
 import numpy as np
 import moderngl as mgl
+import pywavefront
 
 class VBO:
     def __init__(self, ctx):
@@ -11,7 +11,9 @@ class VBO:
         self.vbos['pisatower'] = PisaTowerVBO(ctx)
         self.vbos['catedral'] = CatedralVBO(ctx)
         self.vbos['estatua'] = EstatuaVBO(ctx)
-        self.vbos['estatua2'] = Estatua2VBO(ctx)
+        self.vbos['bigben'] = bigbenVBO(ctx)
+        self.vbos['moai'] = moaiVBO(ctx)
+        self.vbos['estatua2'] =  Estatua2VBO(ctx)
 
 
     def destroy(self):
@@ -34,21 +36,19 @@ class BaseVBO:
     def destroy(self):
         self.vbo.release()
         
-
-
 class CubeVBO(BaseVBO):
     def __init__(self, ctx):
         super().__init__(ctx)
         self.format = '2f 3f 3f'
+
         self.attribs = ['in_texcoord_0', 'in_normal' ,'in_position']
     
-
 
     @staticmethod
     def get_data(vertices, indices):
         data = [vertices[ind] for triangle in indices for ind in triangle]
         return np.array(data, dtype='f4')
-    
+
     def get_vertex_data(self):
         # Método para obtener los datos de los vértices del triángulo
         #coordenadas de los vertices del triangulo
@@ -181,6 +181,32 @@ class Estatua2VBO(BaseVBO):
         
     def get_vertex_data(self):
         objs = pywavefront.Wavefront('objects/Statue_v1_L2.123cc93d694a-81fb-4c81-8a75-7fa010dfa777/12330_Statue_v1_L2.obj', cache=True, parse=True)
+        obj = objs.materials.popitem()[1]
+        vertex_data = obj.vertices
+        vertex_data = np.array(vertex_data, dtype='f4')
+        return vertex_data
+    
+class bigbenVBO(BaseVBO):
+    def __init__(self, app):
+        super().__init__(app)
+        self.format = '2f 3f 3f'
+        self.attribs = ['in_texcoord_0', 'in_normal', 'in_position']
+
+    def get_vertex_data(self):
+        objs = pywavefront.Wavefront('objects/bigben/10059_big_ben_v2_max2011_it1.obj', cache=True, parse=True)
+        obj = objs.materials.popitem()[1]
+        vertex_data = obj.vertices
+        vertex_data = np.array(vertex_data, dtype='f4')
+        return vertex_data
+
+class moaiVBO(BaseVBO):
+    def __init__(self, app):
+        super().__init__(app)
+        self.format = '2f 3f 3f'
+        self.attribs = ['in_texcoord_0', 'in_normal', 'in_position']
+
+    def get_vertex_data(self):
+        objs = pywavefront.Wavefront('objects/moai/10805_Moai_L3.mb.obj', cache=True, parse=True)
         obj = objs.materials.popitem()[1]
         vertex_data = obj.vertices
         vertex_data = np.array(vertex_data, dtype='f4')

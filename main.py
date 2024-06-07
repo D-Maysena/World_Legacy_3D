@@ -6,7 +6,6 @@ from camera import Camera
 from light import Light
 from mesh import Mesh
 from scene import Scene
-
 class GraphicsEngine:
     #El método __init__(self, win_size=(800, 600)) en la clase GraphicsEngine es el 
     # constructor que inicializa una nueva instancia de la clase, configurando Pygame y estableciendo el tamaño de la ventana con un valor por defecto de (800, 600)
@@ -115,3 +114,4 @@ if __name__ == '__main__':
     app = GraphicsEngine()
     #llama al método run() en esa instancia, lo que inicia el bucle principal de la aplicación.
     app.run()
+
