@@ -5,6 +5,8 @@ class Scene:
         self.app = app
         self.objects = []   
         self.load()
+         # skybox
+        self.skybox = AdvancedSkyBox(app)
     
     def add_object(self, obj):
         self.objects.append(obj)
@@ -14,10 +16,10 @@ class Scene:
         app = self.app
         add = self.add_object
     
-        #n, s = 30,2
-        #for x in range(-n, n, s):
-         #   for z in range (-n, n, s):
-          #      add(Cube(app, pos=(x, -s, z)))
+        n, s = 80,2
+        for x in range(-n, n, s):
+           for z in range (-n, n, s):
+              add(Cube(app, pos=(x, -s, z)))
         
         add(Coliseo(app, pos=(-20,-2, -10), scale=(0.002, 0.002, 0.002)))
         add(Eiffel(app, pos=(20,-2, -10), scale=(0.0006, 0.0006, 0.0006)))
@@ -36,3 +38,4 @@ class Scene:
     def render(self):
         for obj in self.objects: 
             obj.render()
+            self.skybox.render()

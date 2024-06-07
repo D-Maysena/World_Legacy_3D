@@ -35,286 +35,128 @@ class BaseModel:
         self.update()
         # Método para renderizar el triángulo
         self.vao.render()
-    
 
-class Cube(BaseModel):
-    def __init__(self, app, vao_name='cube', tex_id=0, pos=(0,0,0), rot=(0,0,0), scale=(1,1,1), radius=1.0):
-        super().__init__(app, vao_name, tex_id, pos, rot, scale, radius)
+class ExtendedBaseModel(BaseModel):
+    def __init__(self, app, vao_name, tex_id, pos, rot, scale):
+        super().__init__(app, vao_name, tex_id, pos, rot, scale)
         self.on_init()
-    
+
     def update(self):
         self.texture.use()
-        self.program['m_model'].write(self.m_model)    
-        self.program['m_view'].write(self.camera.m_view)
         self.program['camPos'].write(self.camera.position)
-        
+        self.program['m_view'].write(self.camera.m_view)
+        self.program['m_model'].write(self.m_model)
 
     def on_init(self):
+        # texture
         self.texture = self.app.mesh.texture.textures[self.tex_id]
         self.program['u_texture_0'] = 0
         self.texture.use()
-        
-        #toma la matriz de proyección (m_proj) de la cámara de la aplicación (self.app.camera)
-        # y la escribe en el uniforme m_proj del programa de shaders.
+        # mvp
         self.program['m_proj'].write(self.camera.m_proj)
         self.program['m_view'].write(self.camera.m_view)
         self.program['m_model'].write(self.m_model)
-        
         # light
         self.program['light.position'].write(self.app.light.position)
         self.program['light.Ia'].write(self.app.light.Ia)
         self.program['light.Id'].write(self.app.light.Id)
         self.program['light.Is'].write(self.app.light.Is)
+    
 
-class Eiffel(BaseModel):
-    def __init__(self, app, vao_name='eiffel', tex_id='eiffel', pos=(0,0,0), rot=(-90,0,0), scale=(1,1,1)):
+class Cube(ExtendedBaseModel):
+    def __init__(self, app, vao_name='cube', tex_id=0, pos=(0,0,0), rot=(0,0,0), scale=(1,1,1), radius=1.0):
+        #super().__init__(app, vao_name, tex_id, pos, rot, scale, radius)
         super().__init__(app, vao_name, tex_id, pos, rot, scale)
-        self.on_init()
+        
     
-    def update(self):
-        self.texture.use()
-        self.program['m_model'].write(self.m_model)    
-        self.program['m_view'].write(self.camera.m_view)
-        self.program['camPos'].write(self.camera.position)
-        
+    
 
-    def on_init(self):
-        self.texture = self.app.mesh.texture.textures[self.tex_id]
-        self.program['u_texture_0'] = 0
-        self.texture.use()
-        
-        #toma la matriz de proyección (m_proj) de la cámara de la aplicación (self.app.camera)
-        # y la escribe en el uniforme m_proj del programa de shaders.
-        self.program['m_proj'].write(self.camera.m_proj)
-        self.program['m_view'].write(self.camera.m_view)
-        self.program['m_model'].write(self.m_model)
-        
-        self.program['light.position'].write(self.app.light.position)
-        self.program['light.Ia'].write(self.app.light.Ia)
-        self.program['light.Id'].write(self.app.light.Id)
-        self.program['light.Is'].write(self.app.light.Is) 
+class Eiffel(ExtendedBaseModel):
+    def __init__(self, app, vao_name='eiffel', tex_id='eiffel', pos=(0,0,0), rot=(-90,0,0), scale=(1,1,1)):
+        #super().__init__(app, vao_name, tex_id, pos, rot, scale)
+        super().__init__(app, vao_name, tex_id, pos, rot, scale)
+
+       
 
         
-class Coliseo(BaseModel):
+class Coliseo(ExtendedBaseModel):
     def __init__(self, app, vao_name='coliseo', tex_id='coliseo', pos=(0,0,0), rot=(-90,0,0), scale=(1,1,1), radius=300.0):
-        super().__init__(app, vao_name, tex_id, pos, rot, scale, radius)
-        
-        self.on_init()
-    
-    def update(self):
-        self.texture.use()
-        self.program['m_model'].write(self.m_model)    
-        self.program['m_view'].write(self.camera.m_view)
-        self.program['camPos'].write(self.camera.position)
-        
+            #super().__init__(app, vao_name, tex_id, pos, rot, scale, radius)
+                super().__init__(app, vao_name, tex_id, pos, rot, scale)
 
-    def on_init(self):
-        self.texture = self.app.mesh.texture.textures[self.tex_id]
-        self.program['u_texture_0'] = 0
-        self.texture.use()
+       
         
-        #toma la matriz de proyección (m_proj) de la cámara de la aplicación (self.app.camera)
-        # y la escribe en el uniforme m_proj del programa de shaders.
-        self.program['m_proj'].write(self.camera.m_proj)
-        self.program['m_view'].write(self.camera.m_view)
-        self.program['m_model'].write(self.m_model)
-        
-        self.program['light.position'].write(self.app.light.position)
-        self.program['light.Ia'].write(self.app.light.Ia)
-        self.program['light.Id'].write(self.app.light.Id)
-        self.program['light.Is'].write(self.app.light.Is) 
-        
-class Museo(BaseModel):
+class Museo(ExtendedBaseModel):
     def __init__(self, app, vao_name='museo', tex_id='museo', pos=(0,0,0), rot=(-90,0,0), scale=(1,1,1)):
         super().__init__(app, vao_name, tex_id, pos, rot, scale)
-        self.on_init()
-    
-    def update(self):
-        self.texture.use()
-        self.program['m_model'].write(self.m_model)    
-        self.program['m_view'].write(self.camera.m_view)
-        self.program['camPos'].write(self.camera.position)
-        
-
-    def on_init(self):
-        self.texture = self.app.mesh.texture.textures[self.tex_id]
-        self.program['u_texture_0'] = 0
-        self.texture.use()
-        
-        #toma la matriz de proyección (m_proj) de la cámara de la aplicación (self.app.camera)
-        # y la escribe en el uniforme m_proj del programa de shaders.
-        self.program['m_proj'].write(self.camera.m_proj)
-        self.program['m_view'].write(self.camera.m_view)
-        self.program['m_model'].write(self.m_model)
-        
-        self.program['light.position'].write(self.app.light.position)
-        self.program['light.Ia'].write(self.app.light.Ia)
-        self.program['light.Id'].write(self.app.light.Id)
-        self.program['light.Is'].write(self.app.light.Is) 
-class PisaTower(BaseModel):
+       
+class PisaTower(ExtendedBaseModel):
     def __init__(self, app, vao_name='pisatower', tex_id='pisatower',
                  pos=(1, 1, 1), rot=(-90, 0, 0), scale=(0.001, 0.001, 0.001)):
         super().__init__(app, vao_name, tex_id, pos, rot, scale)
-        self.on_init()
-
-    def update(self):
-        self.texture.use()
-        self.program['camPos'].write(self.camera.position)
-        self.program['m_view'].write(self.camera.m_view)
-        self.program['m_model'].write(self.m_model)
-
-    def on_init(self):
-        # texture
-        self.texture = self.app.mesh.texture.textures[self.tex_id]
-        self.program['u_texture_0'] = 0
-        self.texture.use()
-        # mvp
-        self.program['m_proj'].write(self.camera.m_proj)
-        self.program['m_view'].write(self.camera.m_view)
-        self.program['m_model'].write(self.m_model)
-        # light
-        self.program['light.position'].write(self.app.light.position)
-        self.program['light.Ia'].write(self.app.light.Ia)
-        self.program['light.Id'].write(self.app.light.Id)
-        self.program['light.Is'].write(self.app.light.Is)
-        
-class Catedral(BaseModel):
+       
+class Catedral(ExtendedBaseModel):
     def __init__(self, app, vao_name='catedral', tex_id='catedral',
                  pos=(1, 1, 1), rot=(-90, 0, 0), scale=(0.0002, 0.0002, 0.0002)):
         super().__init__(app, vao_name, tex_id, pos, rot, scale)
-        self.on_init()
+       
 
-    def update(self):
-        self.texture.use()
-        self.program['camPos'].write(self.camera.position)
-        self.program['m_view'].write(self.camera.m_view)
-        self.program['m_model'].write(self.m_model)
-
-    def on_init(self):
-        # texture
-        self.texture = self.app.mesh.texture.textures[self.tex_id]
-        self.program['u_texture_0'] = 0
-        self.texture.use()
-        # mvp
-        self.program['m_proj'].write(self.camera.m_proj)
-        self.program['m_view'].write(self.camera.m_view)
-        self.program['m_model'].write(self.m_model)
-        # light
-        self.program['light.position'].write(self.app.light.position)
-        self.program['light.Ia'].write(self.app.light.Ia)
-        self.program['light.Id'].write(self.app.light.Id)
-        self.program['light.Is'].write(self.app.light.Is)
-
-class Estatua(BaseModel):
+class Estatua(ExtendedBaseModel):
     def __init__(self, app, vao_name='estatua', tex_id='estatua', 
                  pos=(0, 0, 0), rot=(-90,0,0), scale=(0.002,0.002,0.002)):
         super().__init__(app, vao_name, tex_id, pos, rot, scale)
-        self.on_init()
-        
-        
-    def update(self):
-        self.texture.use()
-        self.program['camPos'].write(self.camera.position)
-        self.program['m_view'].write(self.camera.m_view)
-        self.program['m_model'].write(self.m_model)
-        
-        
-    def on_init(self):
-        # textura
-        self.texture = self.app.mesh.texture.textures[self.tex_id]
-        self.program['u_texture_0'] = 0
-        self.texture.use()
-        # mvp
-        self.program['m_proj'].write(self.camera.m_proj)
-        self.program['m_view'].write(self.camera.m_view)
-        self.program['m_model'].write(self.m_model)
-        # luz
-        self.program['light.position'].write(self.app.light.position)
-        self.program['light.Ia'].write(self.app.light.Ia)
-        self.program['light.Id'].write(self.app.light.Id)
-        self.program['light.Is'].write(self.app.light.Is)
+       
             
             
-            
-class Estatua2(BaseModel):
+class Estatua2(ExtendedBaseModel):
     def __init__(self, app, vao_name='estatua2', tex_id='estatua2', 
                  pos=(0, 0, 0), rot=(-90,0,0), scale=(0.004,0.004,0.004)):
         super().__init__(app, vao_name, tex_id, pos, rot, scale)
-        self.on_init()
         
         
-    def update(self):
-        self.texture.use()
-        self.program['camPos'].write(self.camera.position)
-        self.program['m_view'].write(self.camera.m_view)
-        self.program['m_model'].write(self.m_model)
-        
-        
-    def on_init(self):
-        # textura
-        self.texture = self.app.mesh.texture.textures[self.tex_id]
-        self.program['u_texture_0'] = 0
-        self.texture.use()
-        # mvp
-        self.program['m_proj'].write(self.camera.m_proj)
-        self.program['m_view'].write(self.camera.m_view)
-        self.program['m_model'].write(self.m_model)
-        # luz
-        self.program['light.position'].write(self.app.light.position)
-        self.program['light.Ia'].write(self.app.light.Ia)
-        self.program['light.Id'].write(self.app.light.Id)
-        self.program['light.Is'].write(self.app.light.Is)
-        
-class Bigben(BaseModel):
+class Bigben(ExtendedBaseModel):
     def __init__(self, app, vao_name='bigben', tex_id='bigben',
                  pos=(0, 0, 0), rot=(-90, 0, 0), scale=(0.001, 0.001, 0.001)):
         super().__init__(app, vao_name, tex_id, pos, rot, scale)
-        self.on_init()
-
-    def update(self):
-        self.texture.use()
-        self.program['camPos'].write(self.camera.position)
-        self.program['m_view'].write(self.camera.m_view)
-        self.program['m_model'].write(self.m_model)
-
-    def on_init(self):
-        # texture
-        self.texture = self.app.mesh.texture.textures[self.tex_id]
-        self.program['u_texture_0'] = 0
-        self.texture.use()
-        # mvp
-        self.program['m_proj'].write(self.camera.m_proj)
-        self.program['m_view'].write(self.camera.m_view)
-        self.program['m_model'].write(self.m_model)
-        # light
-        self.program['light.position'].write(self.app.light.position)
-        self.program['light.Ia'].write(self.app.light.Ia)
-        self.program['light.Id'].write(self.app.light.Id)
-        self.program['light.Is'].write(self.app.light.Is)
-
-class moai(BaseModel):
+       
+class moai(ExtendedBaseModel):
     def __init__(self, app, vao_name='moai', tex_id='moai',
                  pos=(0, 0, 0), rot=(-90, 0, 0), scale=(0.01, 0.01, 0.01)):
+        super().__init__(app, vao_name, tex_id, pos, rot, scale)
+        
+
+
+class SkyBox(BaseModel):
+    def __init__(self, app, vao_name='skybox', tex_id='skybox',
+                 pos=(0, 0, 0), rot=(0, 0, 0), scale=(1, 1, 1)):
         super().__init__(app, vao_name, tex_id, pos, rot, scale)
         self.on_init()
 
     def update(self):
-        self.texture.use()
-        self.program['camPos'].write(self.camera.position)
-        self.program['m_view'].write(self.camera.m_view)
-        self.program['m_model'].write(self.m_model)
+        self.program['m_view'].write(glm.mat4(glm.mat3(self.camera.m_view)))
 
     def on_init(self):
         # texture
         self.texture = self.app.mesh.texture.textures[self.tex_id]
-        self.program['u_texture_0'] = 0
-        self.texture.use()
+        self.program['u_texture_skybox'] = 0
+        self.texture.use(location=0)
         # mvp
         self.program['m_proj'].write(self.camera.m_proj)
-        self.program['m_view'].write(self.camera.m_view)
-        self.program['m_model'].write(self.m_model)
-        # light
-        self.program['light.position'].write(self.app.light.position)
-        self.program['light.Ia'].write(self.app.light.Ia)
-        self.program['light.Id'].write(self.app.light.Id)
-        self.program['light.Is'].write(self.app.light.Is)
+        self.program['m_view'].write(glm.mat4(glm.mat3(self.camera.m_view)))
+
+
+class AdvancedSkyBox(BaseModel):
+    def __init__(self, app, vao_name='advanced_skybox', tex_id='skybox',
+                 pos=(0, 0, 0), rot=(0, 0, 0), scale=(1, 1, 1)):
+        super().__init__(app, vao_name, tex_id, pos, rot, scale)
+        self.on_init()
+
+    def update(self):
+        m_view = glm.mat4(glm.mat3(self.camera.m_view))
+        self.program['m_invProjView'].write(glm.inverse(self.camera.m_proj * m_view))
+
+    def on_init(self):
+        # texture
+        self.texture = self.app.mesh.texture.textures[self.tex_id]
+        self.program['u_texture_skybox'] = 0
+        self.texture.use(location=0)

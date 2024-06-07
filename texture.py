@@ -14,7 +14,28 @@ class Texture:
         self.textures['estatua2'] = self.get_texture(path='objects/Statue_v1_L2.123cc93d694a-81fb-4c81-8a75-7fa010dfa777/DavidFixedDiff.jpg')
         self.textures['bigben'] = self.get_texture(path='objects/bigben/10059_big_ben_v1_diffuse.jpg')
         self.textures['moai'] = self.get_texture(path='objects/moai/txtr02.jpg')
-        
+        self.textures['skybox'] = self.get_texture_cube(dir_path='textures/skybox1/', ext='png')
+
+    def get_texture_cube(self, dir_path, ext='png'):
+        faces = ['right', 'left', 'top', 'bottom'] + ['front', 'back'][::-1]
+        # textures = [pg.image.load(dir_path + f'{face}.{ext}').convert() for face in faces]
+        textures = []
+        for face in faces:
+            texture = pg.image.load(dir_path + f'{face}.{ext}').convert()
+            if face in ['right', 'left', 'front', 'back']:
+                texture = pg.transform.flip(texture, flip_x=True, flip_y=False)
+            else:
+                texture = pg.transform.flip(texture, flip_x=False, flip_y=True)
+            textures.append(texture)
+
+        size = textures[0].get_size()
+        texture_cube = self.ctx.texture_cube(size=size, components=3, data=None)
+
+        for i in range(6):
+            texture_data = pg.image.tostring(textures[i], 'RGB')
+            texture_cube.write(face=i, data=texture_data)
+
+        return texture_cube
     def get_texture(self, path):
         texture = pg.image.load(path).convert()
         texture = pg.transform.flip(texture, flip_x=False, flip_y=True)

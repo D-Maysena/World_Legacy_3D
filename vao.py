@@ -50,6 +50,15 @@ class VAO:
         self.vaos['moai'] = self.get_vao(
             program=self.program.programs['default'],
             vbo=self.vbo.vbos['moai'])
+        
+        self.vaos['skybox'] = self.get_vao(
+            program=self.program.programs['skybox'],
+            vbo=self.vbo.vbos['skybox'])
+
+        # advanced_skybox vao
+        self.vaos['advanced_skybox'] = self.get_vao(
+            program=self.program.programs['advanced_skybox'],
+            vbo=self.vbo.vbos['advanced_skybox'])
 
     def get_vao(self, program, vbo):
         vao = self.ctx.vertex_array(program, [(vbo.vbo, vbo.format, *vbo.attribs)])
