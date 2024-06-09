@@ -14,7 +14,7 @@ class GraphicsEngine:
         # Inicializa el módulo Pygame
         pg.init()
     
-        # Establece el tamaño de la ventana
+        
         self.WIN_SIZE = win_size
     
         # Configura los atributos de OpenGL
