@@ -51,6 +51,11 @@ class VAO:
             program=self.program.programs['default'],
             vbo=self.vbo.vbos['moai'])
         
+        # Cubo
+        self.vaos['cubo'] = self.get_vao(
+            program=self.program.programs['default'],
+            vbo=self.vbo.vbos['cubo'])
+        
         self.vaos['skybox'] = self.get_vao(
             program=self.program.programs['skybox'],
             vbo=self.vbo.vbos['skybox'])

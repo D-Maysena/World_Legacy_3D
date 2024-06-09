@@ -27,7 +27,7 @@ class GraphicsEngine:
         # Light
         self.light = Light(position=(50, 50, -10), color=(1, 1, 1))
         self.additional_lights = [
-            AdditionalLight(position=(0, -3, -10), color=(1.0, 0.0, 0.0)),
+            AdditionalLight(position=(0, -3, -10), color=(1, 1, 1)),
             AdditionalLight2(position=(0, 20, -10), color=(1, 0.5, 0.5))
         ]
 

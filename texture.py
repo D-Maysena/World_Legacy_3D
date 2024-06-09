@@ -14,6 +14,7 @@ class Texture:
         self.textures['estatua2'] = self.get_texture(path='objects/Statue_v1_L2.123cc93d694a-81fb-4c81-8a75-7fa010dfa777/DavidFixedDiff.jpg')
         self.textures['bigben'] = self.get_texture(path='objects/bigben/10059_big_ben_v1_diffuse.jpg')
         self.textures['moai'] = self.get_texture(path='objects/moai/txtr02.jpg')
+        self.textures['cubo'] = self.get_texture(path='objects/Cubo/puzzle_cube_diffuse.jpg')
         self.textures['skybox'] = self.get_texture_cube(dir_path='textures/skybox1/', ext='png')
 
     def get_texture_cube(self, dir_path, ext='png'):
