@@ -64,8 +64,7 @@ class ExtendedBaseModel(BaseModel):
     
 
 class Cube(ExtendedBaseModel):
-    def __init__(self, app, vao_name='cube', tex_id=0, pos=(0,0,0), rot=(0,0,0), scale=(1,1,1), radius=1.0):
-        #super().__init__(app, vao_name, tex_id, pos, rot, scale, radius)
+    def __init__(self, app, vao_name='cube', tex_id=6, pos=(0,0,0), rot=(0,0,0), scale=(1,1,1), radius=1.0):
         super().__init__(app, vao_name, tex_id, pos, rot, scale)
         
     
@@ -73,7 +72,6 @@ class Cube(ExtendedBaseModel):
 
 class Eiffel(ExtendedBaseModel):
     def __init__(self, app, vao_name='eiffel', tex_id='eiffel', pos=(0,0,0), rot=(-90,0,0), scale=(1,1,1)):
-        #super().__init__(app, vao_name, tex_id, pos, rot, scale)
         super().__init__(app, vao_name, tex_id, pos, rot, scale)
 
        
@@ -81,7 +79,6 @@ class Eiffel(ExtendedBaseModel):
         
 class Coliseo(ExtendedBaseModel):
     def __init__(self, app, vao_name='coliseo', tex_id='coliseo', pos=(0,0,0), rot=(-90,0,0), scale=(1,1,1), radius=300.0):
-            #super().__init__(app, vao_name, tex_id, pos, rot, scale, radius)
                 super().__init__(app, vao_name, tex_id, pos, rot, scale)
 
        

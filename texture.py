@@ -6,6 +6,11 @@ class Texture:
         self.textures = {}
         self.textures[0] = self.get_texture(path='textures/box.jpg')
         self.textures[1] = self.get_texture(path='textures/texture.jpg')
+        
+        self.textures[3] = self.get_texture(path='textures/alfombra1.png')
+        self.textures[4] = self.get_texture(path='textures/alfombra2.png')
+        self.textures[5] = self.get_texture(path='textures/alfombra3.png')
+        self.textures[6] = self.get_texture(path='textures/alfombra4.png')
         self.textures['eiffel'] = self.get_texture(path='objects/Eiffel/10067_Eiffel_Tower_v1_diffuse.JPG')
         self.textures['coliseo'] = self.get_texture(path='objects/Coliseo/10064_colosseum_diffuse.jpg')
         self.textures['pisatower'] = self.get_texture(path='objects/pisatower/10076_pisa_tower_v1_diffuse.jpg')
