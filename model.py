@@ -92,7 +92,7 @@ class Museo(ExtendedBaseModel):
        
 class PisaTower(ExtendedBaseModel):
     def __init__(self, app, vao_name='pisatower', tex_id='pisatower',
-                 pos=(1, 1, 1), rot=(-90, 0, 0), scale=(0.001, 0.001, 0.001)):
+                 pos=(1, 1, 1), rot=(-80, 0, 0), scale=(0.001, 0.001, 0.001)):
         super().__init__(app, vao_name, tex_id, pos, rot, scale)
        
 class Catedral(ExtendedBaseModel):
