@@ -154,3 +154,226 @@ class Museo(BaseModel):
         self.program['light.Ia'].write(self.app.light.Ia)
         self.program['light.Id'].write(self.app.light.Id)
         self.program['light.Is'].write(self.app.light.Is) 
+
+class PisaTower(BaseModel):
+    def __init__(self, app, vao_name='pisatower', tex_id='pisatower',
+                 pos=(1, 1, 1), rot=(-90, 0, 0), scale=(0.001, 0.001, 0.001)):
+        super().__init__(app, vao_name, tex_id, pos, rot, scale)
+        self.on_init()
+
+    def update(self):
+        self.texture.use()
+        self.program['camPos'].write(self.camera.position)
+        self.program['m_view'].write(self.camera.m_view)
+        self.program['m_model'].write(self.m_model)
+
+    def on_init(self):
+        # texture
+        self.texture = self.app.mesh.texture.textures[self.tex_id]
+        self.program['u_texture_0'] = 0
+        self.texture.use()
+        # mvp
+        self.program['m_proj'].write(self.camera.m_proj)
+        self.program['m_view'].write(self.camera.m_view)
+        self.program['m_model'].write(self.m_model)
+        # light
+        self.program['light.position'].write(self.app.light.position)
+        self.program['light.Ia'].write(self.app.light.Ia)
+        self.program['light.Id'].write(self.app.light.Id)
+        self.program['light.Is'].write(self.app.light.Is)
+        
+class Catedral(BaseModel):
+    def __init__(self, app, vao_name='catedral', tex_id='catedral',
+                 pos=(1, 1, 1), rot=(-90, 0, 0), scale=(0.0002, 0.0002, 0.0002)):
+        super().__init__(app, vao_name, tex_id, pos, rot, scale)
+        self.on_init()
+
+    def update(self):
+        self.texture.use()
+        self.program['camPos'].write(self.camera.position)
+        self.program['m_view'].write(self.camera.m_view)
+        self.program['m_model'].write(self.m_model)
+
+    def on_init(self):
+        # texture
+        self.texture = self.app.mesh.texture.textures[self.tex_id]
+        self.program['u_texture_0'] = 0
+        self.texture.use()
+        # mvp
+        self.program['m_proj'].write(self.camera.m_proj)
+        self.program['m_view'].write(self.camera.m_view)
+        self.program['m_model'].write(self.m_model)
+        # light
+        self.program['light.position'].write(self.app.light.position)
+        self.program['light.Ia'].write(self.app.light.Ia)
+        self.program['light.Id'].write(self.app.light.Id)
+        self.program['light.Is'].write(self.app.light.Is)
+
+class Estatua(BaseModel):
+    def __init__(self, app, vao_name='estatua', tex_id='estatua', 
+                 pos=(0, 0, 0), rot=(-90,0,0), scale=(0.002,0.002,0.002)):
+        super().__init__(app, vao_name, tex_id, pos, rot, scale)
+        self.on_init()
+        
+        
+    def update(self):
+        self.texture.use()
+        self.program['camPos'].write(self.camera.position)
+        self.program['m_view'].write(self.camera.m_view)
+        self.program['m_model'].write(self.m_model)
+        
+        
+    def on_init(self):
+        # textura
+        self.texture = self.app.mesh.texture.textures[self.tex_id]
+        self.program['u_texture_0'] = 0
+        self.texture.use()
+        # mvp
+        self.program['m_proj'].write(self.camera.m_proj)
+        self.program['m_view'].write(self.camera.m_view)
+        self.program['m_model'].write(self.m_model)
+        # luz
+        self.program['light.position'].write(self.app.light.position)
+        self.program['light.Ia'].write(self.app.light.Ia)
+        self.program['light.Id'].write(self.app.light.Id)
+        self.program['light.Is'].write(self.app.light.Is)
+            
+            
+            
+class Estatua2(BaseModel):
+    def __init__(self, app, vao_name='estatua2', tex_id='estatua2', 
+                 pos=(0, 0, 0), rot=(-90,0,0), scale=(0.004,0.004,0.004)):
+        super().__init__(app, vao_name, tex_id, pos, rot, scale)
+        self.on_init()
+        
+        
+    def update(self):
+        self.texture.use()
+        self.program['camPos'].write(self.camera.position)
+        self.program['m_view'].write(self.camera.m_view)
+        self.program['m_model'].write(self.m_model)
+        
+        
+    def on_init(self):
+        # textura
+        self.texture = self.app.mesh.texture.textures[self.tex_id]
+        self.program['u_texture_0'] = 0
+        self.texture.use()
+        # mvp
+        self.program['m_proj'].write(self.camera.m_proj)
+        self.program['m_view'].write(self.camera.m_view)
+        self.program['m_model'].write(self.m_model)
+        # luz
+        self.program['light.position'].write(self.app.light.position)
+        self.program['light.Ia'].write(self.app.light.Ia)
+        self.program['light.Id'].write(self.app.light.Id)
+        self.program['light.Is'].write(self.app.light.Is)
+        
+class Bigben(BaseModel):
+    def __init__(self, app, vao_name='bigben', tex_id='bigben',
+                 pos=(0, 0, 0), rot=(-90, 0, 0), scale=(0.001, 0.001, 0.001)):
+        super().__init__(app, vao_name, tex_id, pos, rot, scale)
+        self.on_init()
+
+    def update(self):
+        self.texture.use()
+        self.program['camPos'].write(self.camera.position)
+        self.program['m_view'].write(self.camera.m_view)
+        self.program['m_model'].write(self.m_model)
+
+    def on_init(self):
+        # texture
+        self.texture = self.app.mesh.texture.textures[self.tex_id]
+        self.program['u_texture_0'] = 0
+        self.texture.use()
+        # mvp
+        self.program['m_proj'].write(self.camera.m_proj)
+        self.program['m_view'].write(self.camera.m_view)
+        self.program['m_model'].write(self.m_model)
+        # light
+        self.program['light.position'].write(self.app.light.position)
+        self.program['light.Ia'].write(self.app.light.Ia)
+        self.program['light.Id'].write(self.app.light.Id)
+        self.program['light.Is'].write(self.app.light.Is)
+
+class moai(BaseModel):
+    def __init__(self, app, vao_name='moai', tex_id='moai',
+                 pos=(0, 0, 0), rot=(-90, 0, 0), scale=(0.01, 0.01, 0.01)):
+        super().__init__(app, vao_name, tex_id, pos, rot, scale)
+        self.on_init()
+
+    def update(self):
+        self.texture.use()
+        self.program['camPos'].write(self.camera.position)
+        self.program['m_view'].write(self.camera.m_view)
+        self.program['m_model'].write(self.m_model)
+
+    def on_init(self):
+        # texture
+        self.texture = self.app.mesh.texture.textures[self.tex_id]
+        self.program['u_texture_0'] = 0
+        self.texture.use()
+        # mvp
+        self.program['m_proj'].write(self.camera.m_proj)
+        self.program['m_view'].write(self.camera.m_view)
+        self.program['m_model'].write(self.m_model)
+        # light
+        self.program['light.position'].write(self.app.light.position)
+        self.program['light.Ia'].write(self.app.light.Ia)
+        self.program['light.Id'].write(self.app.light.Id)
+        self.program['light.Is'].write(self.app.light.Is)
+    
+class museo3(BaseModel):
+    def __init__(self, app, vao_name='museo3', tex_id='museo3',
+                 pos=(0, 0, 0), rot=(-90, 0, 0), scale=(0.01, 0.01, 0.01)):
+        super().__init__(app, vao_name, tex_id, pos, rot, scale)
+        self.on_init()
+
+    def update(self):
+        self.texture.use()
+        self.program['camPos'].write(self.camera.position)
+        self.program['m_view'].write(self.camera.m_view)
+        self.program['m_model'].write(self.m_model)
+
+    def on_init(self):
+        # texture
+        self.texture = self.app.mesh.texture.textures[self.tex_id]
+        self.program['u_texture_0'] = 0
+        self.texture.use()
+        # mvp
+        self.program['m_proj'].write(self.camera.m_proj)
+        self.program['m_view'].write(self.camera.m_view)
+        self.program['m_model'].write(self.m_model)
+        # light
+        self.program['light.position'].write(self.app.light.position)
+        self.program['light.Ia'].write(self.app.light.Ia)
+        self.program['light.Id'].write(self.app.light.Id)
+        self.program['light.Is'].write(self.app.light.Is)
+
+class museo4(BaseModel):
+    def __init__(self, app, vao_name='museo4', tex_id='museo4',
+                 pos=(0, 0, 0), rot=(0,0,0), scale=(0.01, 0.01, 0.01)):
+        super().__init__(app, vao_name, tex_id, pos, rot, scale)
+        self.on_init()
+
+    def update(self):
+        self.texture.use()
+        self.program['camPos'].write(self.camera.position)
+        self.program['m_view'].write(self.camera.m_view)
+        self.program['m_model'].write(self.m_model)
+
+    def on_init(self):
+        # texture
+        self.texture = self.app.mesh.texture.textures[self.tex_id]
+        self.program['u_texture_0'] = 0
+        self.texture.use()
+        # mvp
+        self.program['m_proj'].write(self.camera.m_proj)
+        self.program['m_view'].write(self.camera.m_view)
+        self.program['m_model'].write(self.m_model)
+        # light
+        self.program['light.position'].write(self.app.light.position)
+        self.program['light.Ia'].write(self.app.light.Ia)
+        self.program['light.Id'].write(self.app.light.Id)
+        self.program['light.Is'].write(self.app.light.Is)
+

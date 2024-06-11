@@ -1,0 +1,42 @@
+# Blender 4.1.1 MTL File: 'modelo.blend'
+# www.blender.org
+
+newmtl Light01
+Ns 690.322754
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd C:/Light01_baseColor.jpeg
+map_Ke C:/Light01_baseColor.jpeg
+
+newmtl Light02
+Ns 741.894348
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd C:/Light02_baseColor.jpeg
+map_Ke C:/Light02_baseColor.jpeg
+
+newmtl glass
+Ns 700.488403
+Ka 1.000000 1.000000 1.000000
+Kd 0.501961 0.501961 0.501961
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 0.949336
+illum 6
+
+newmtl material_diffuse
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.218667 0.218667 0.218667
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd C:/material_diffuse_baseColor.jpeg
