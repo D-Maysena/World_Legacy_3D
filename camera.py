@@ -2,11 +2,11 @@ import glm
 import pygame as pg
 
 FOV = 50 #grados
-NEAR = 0.1
 
 FAR = 1000
 #Velocidad de la cámara
 SPEED = 0.04
+
 SENSITIVITY  = 0.03
 
 class Camera:
