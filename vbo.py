@@ -13,12 +13,12 @@ class VBO:
         self.vbos['estatua'] = EstatuaVBO(ctx)
         self.vbos['bigben'] = bigbenVBO(ctx)
         self.vbos['moai'] = moaiVBO(ctx)
-        self.vbos['cubo'] = CuboVBO(ctx)
         self.vbos['estatua2'] =  Estatua2VBO(ctx)
         self.vbos['skybox'] = SkyBoxVBO(ctx)
         self.vbos['advanced_skybox'] = AdvancedSkyBoxVBO(ctx)
-
-
+        self.vbos['estatua2'] =  Estatua2VBO(ctx)
+        self.vbos['museo3'] =  museo3VBO(ctx)
+        self.vbos['museo4'] =  museo4VBO(ctx)
     def destroy(self):
         [vbo.destroy() for vbo in self.vbos.values()]
 
@@ -133,7 +133,6 @@ class EiffelVBO(BaseVBO):
             print("Error:", e)
             
         return vertex_data
-    
 
 class PisaTowerVBO(BaseVBO):
     def __init__(self, app):
@@ -147,7 +146,6 @@ class PisaTowerVBO(BaseVBO):
         vertex_data = obj.vertices
         vertex_data = np.array(vertex_data, dtype='f4')
         return vertex_data
-        
 class CatedralVBO(BaseVBO):
     def __init__(self, app):
         super().__init__(app)
@@ -197,19 +195,6 @@ class bigbenVBO(BaseVBO):
 
     def get_vertex_data(self):
         objs = pywavefront.Wavefront('objects/bigben/10059_big_ben_v2_max2011_it1.obj', cache=True, parse=True)
-        obj = objs.materials.popitem()[1]
-        vertex_data = obj.vertices
-        vertex_data = np.array(vertex_data, dtype='f4')
-        return vertex_data
-    
-class CuboVBO(BaseVBO):
-    def __init__(self, app):
-        super().__init__(app)
-        self.format = '2f 3f 3f'
-        self.attribs = ['in_texcoord_0', 'in_normal', 'in_position']
-
-    def get_vertex_data(self):
-        objs = pywavefront.Wavefront('objects/Cubo/11694_puzzle_cube_v1_L2.obj', cache=True, parse=True)
         obj = objs.materials.popitem()[1]
         vertex_data = obj.vertices
         vertex_data = np.array(vertex_data, dtype='f4')
@@ -267,15 +252,29 @@ class AdvancedSkyBoxVBO(BaseVBO):
         vertex_data = np.array(vertices, dtype='f4')
         return vertex_data
 
+class museo3VBO(BaseVBO):
+        def __init__(self, app):
+            super().__init__(app)
+            self.format = '2f 3f 3f'
+            self.attribs = ['in_texcoord_0', 'in_normal', 'in_position']
 
+        def get_vertex_data(self):
+            objs = pywavefront.Wavefront('objects/Museos/Museo3/modelo_editado.obj', cache=True, parse=True)
+            obj = objs.materials.popitem()[1]
+            vertex_data = obj.vertices
+            vertex_data = np.array(vertex_data, dtype='f4')
+            return vertex_data
+        
+class museo4VBO(BaseVBO):
+        def __init__(self, app):
+            super().__init__(app)
+            self.format = '2f 3f 3f'
+            self.attribs = ['in_texcoord_0', 'in_normal', 'in_position']
 
-
-
-
-
-
-
-
-
-
+        def get_vertex_data(self):
+            objs = pywavefront.Wavefront('objects/Museos/Museo4/modelo_editado.obj', cache=True, parse=True)
+            obj = objs.materials.popitem()[1]
+            vertex_data = obj.vertices
+            vertex_data = np.array(vertex_data, dtype='f4')
+            return vertex_data
 

@@ -20,8 +20,6 @@ class VAO:
         self.vaos['coliseo'] = self.get_vao(
             program=self.program.programs['default'],
             vbo = self.vbo.vbos['coliseo'])
-        
-
         # Pisa Tower vao
         self.vaos['pisatower'] = self.get_vao(
             program=self.program.programs['default'],
@@ -51,10 +49,6 @@ class VAO:
             program=self.program.programs['default'],
             vbo=self.vbo.vbos['moai'])
         
-        # Cubo
-        self.vaos['cubo'] = self.get_vao(
-            program=self.program.programs['default'],
-            vbo=self.vbo.vbos['cubo'])
         
         self.vaos['skybox'] = self.get_vao(
             program=self.program.programs['skybox'],
@@ -64,6 +58,11 @@ class VAO:
         self.vaos['advanced_skybox'] = self.get_vao(
             program=self.program.programs['advanced_skybox'],
             vbo=self.vbo.vbos['advanced_skybox'])
+        
+        self.vaos['museo4'] = self.get_vao(
+            program=self.program.programs['default'],
+            vbo=self.vbo.vbos['museo4'])
+
 
     def get_vao(self, program, vbo):
         vao = self.ctx.vertex_array(program, [(vbo.vbo, vbo.format, *vbo.attribs)])
