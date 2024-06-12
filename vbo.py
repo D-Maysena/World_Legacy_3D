@@ -238,4 +238,3 @@ class museo4VBO(BaseVBO):
             vertex_data = obj.vertices
             vertex_data = np.array(vertex_data, dtype='f4')
             return vertex_data
-

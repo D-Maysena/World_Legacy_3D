@@ -20,7 +20,6 @@ class Scene:
         add(Catedral(app, pos=(10, 10, -5)))
         add(Estatua(app, pos=(0, 10, -10)))
         add(Estatua2(app, pos=(5, 10, -10)))
-        
         add(Bigben(app, pos=(0, -2, -10)))
         add(moai(app,pos=(-4,10,-10)))
         add(museo4(app,pos=(-4,10,-10), scale=(0.2,0.2,0.2)))
