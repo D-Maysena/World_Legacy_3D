@@ -32,7 +32,7 @@ class Scene:
         add(Estatua2(app, pos=(5, 10, -10)))
         add(Bigben(app, pos=(0, -2, -10)))
         add(moai(app, pos=(-4, -2, -10)))
-        add(cubo(app, pos=(-4, -2, -10), scale=(10, 10, 10)))
+        #add(cubo(app, pos=(-4, -2, -10), scale=(10, 10, 10)))
 
         # Add lights
         self.add_light(self.app.light)
