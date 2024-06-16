@@ -11,8 +11,28 @@ El proyecto consiste en un paseo virtual de un múseo en donde se podrán observ
  
 Podremos encontrar algunas de las siguientes estructuras:
 
-![](https://images.free3d.com/imgd/l5/593405.jpg)
-![](https://images.free3d.com/imgd/l10/5b7c774c26be8bd36e8b4567/4922-tour-eiffel.png)
+![](https://preview.free3d.com/img/2017/11/2202318645479081679/0tfkcsfb.jpg)
+![](https://img.freepik.com/premium-photo/3d-model-colosseum-rome_783299-1593.jpg?w=300)
+![](https://preview.free3d.com/img/2017/10/2154821820983805145/c3hdk9qf.jpg)
+
+## Ejecutar
+
+Para probar este proyecto, primero clona el repositorio
+
+```bash
+git clone https://github.com/D-Maysena/World_Legacy_3D.git
+```
+
+Instala todas las dependencias de requirements.txt
+```bash
+pip install -r requirements.txt
+```
+
+Ejecuta
+```bash
+python manage.py
+```
+
 
 
 ## Authors
