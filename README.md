@@ -6,7 +6,7 @@
 [![PyGame](https://img.shields.io/badge/PyGame-2.0.1-green.svg?style=flat-square)](https://www.pygame.org/docs/)
 [![PyGlm](https://img.shields.io/badge/PyGlm-1.2.5,-green.svg?style=flat-square)](https://github.com/Zuzu-Typ/PyGLM/wiki)
 
-## Descripción
+## Description
 The project consists of a virtual tour of a museum where you can see some of the monuments that are part of the world heritage.
 
 We can find some of the following structures:
@@ -36,8 +36,6 @@ Inside the project folder, run:
 ```bash
 python manage.py
 ```
-
-
 
 ## Authors
 
