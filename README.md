@@ -34,7 +34,7 @@ pip install -r requirements.txt
 
 Inside the project folder, run:
 ```bash
-python manage.py
+python main.py
 ```
 
 ## Authors
