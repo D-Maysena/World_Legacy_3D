@@ -7,29 +7,32 @@
 [![PyGlm](https://img.shields.io/badge/PyGlm-1.2.5,-green.svg?style=flat-square)](https://github.com/Zuzu-Typ/PyGLM/wiki)
 
 ## Descripción
-El proyecto consiste en un paseo virtual de un múseo en donde se podrán observar algunos de los monumentos que forman parte del patrimonio de la humanidad
- 
-Podremos encontrar algunas de las siguientes estructuras:
+The project consists of a virtual tour of a museum where you can see some of the monuments that are part of the world heritage.
 
-![](https://preview.free3d.com/img/2017/11/2202318645479081679/0tfkcsfb.jpg)
+We can find some of the following structures:
 
-![](https://preview.free3d.com/img/2016/03/1870535474905351391/f25u12u7.jpg)
+![](https://media.sketchfab.com/models/d4b8a2555d964f749307892973d83ffe/thumbnails/f19dfe4c59764a6b948301678fe4fef6/1fceea781ab34c0a8629a5c0f8001b56.jpeg)
 
-![](https://preview.free3d.com/img/2017/10/2154821820983805145/c3hdk9qf.jpg)
-## Ejecutar
+![](https://dl.myminifactory.com/object-assets/579f9df8f4193/images/720X720-7a449c1ae87d98e64b243374362c2c8b9dfde693.jpg)
 
-Para probar este proyecto, primero clona el repositorio
+![](https://fbi.cults3d.com/uploaders/14783729/illustration-file/6e2c3722-cf93-4f20-84b4-9787f4f145e6/720X720-towerofpisa.jpg)
+
+
+
+## How to start
+
+To test this project, first clone the repository
 
 ```bash
 git clone https://github.com/D-Maysena/World_Legacy_3D.git
 ```
 
-Instala todas las dependencias de requirements.txt
+Install all dependencies from requirements.txt
 ```bash
 pip install -r requirements.txt
 ```
 
-Ejecuta
+Inside the project folder, run:
 ```bash
 python manage.py
 ```
