@@ -13,7 +13,7 @@ Podremos encontrar algunas de las siguientes estructuras:
 
 ![](https://preview.free3d.com/img/2017/11/2202318645479081679/0tfkcsfb.jpg)
 
-![](https://img.freepik.com/premium-photo/3d-model-colosseum-rome_783299-1593.jpg?w=300)
+![](https://preview.free3d.com/img/2016/03/1870535474905351391/f25u12u7.jpg)
 
 ![](https://preview.free3d.com/img/2017/10/2154821820983805145/c3hdk9qf.jpg)
 ## Ejecutar
