@@ -10,7 +10,7 @@ class Texture:
         self.textures[3] = self.get_texture(path='textures/alfombra1.png')
         self.textures[4] = self.get_texture(path='textures/alfombra2.png')
         self.textures[5] = self.get_texture(path='textures/alfombra3.png')
-        self.textures[6] = self.get_texture(path='textures/alfombra4.png')
+        self.textures[6] = self.get_texture(path='textures/cesped3.png')
         self.textures['eiffel'] = self.get_texture(path='objects/Eiffel/10067_Eiffel_Tower_v1_diffuse.JPG')
         self.textures['coliseo'] = self.get_texture(path='objects/Coliseo/10064_colosseum_diffuse.jpg')
         self.textures['pisatower'] = self.get_texture(path='objects/pisatower/10076_pisa_tower_v1_diffuse.jpg')
@@ -22,6 +22,27 @@ class Texture:
         self.textures['skybox'] = self.get_texture_cube(dir_path='textures/skybox1/', ext='png')
         self.textures['museo3'] = self.get_texture(path='objects/Museos/Museo3/texture.jpeg')
         self.textures['museo4'] = self.get_texture(path='objects/Museos/Museo4/material_diffuse_baseColor.jpeg')
+        
+        self.textures['pedestal_bigben'] = self.get_texture(path='objects/Pedestal/10421_square_pedastal_diffuse.jpg')
+        self.textures['pedestal_eiffel'] = self.get_texture(path='objects/Pedestal/10421_square_pedastal_diffuse.jpg')
+        self.textures['pedestal_coliseo'] = self.get_texture(path='objects/Pedestal/10421_square_pedastal_diffuse.jpg')
+        self.textures['pedestal_pisatower'] = self.get_texture(path='objects/Pedestal/10421_square_pedastal_diffuse.jpg')
+        self.textures['pedestal_catedral'] = self.get_texture(path='objects/Pedestal/10421_square_pedastal_diffuse.jpg')
+        self.textures['pedestal_estatua'] = self.get_texture(path='objects/Pedestal/10421_square_pedastal_diffuse.jpg')
+        self.textures['pedestal_estatua2'] = self.get_texture(path='objects/Pedestal/10421_square_pedastal_diffuse.jpg')
+        self.textures['pedestal_moai'] = self.get_texture(path='objects/Pedestal/10421_square_pedastal_diffuse.jpg')
+        
+        self.textures['estatua3'] = self.get_texture(path='objects/Estatua_A/statue.jpg')
+        self.textures['banco1'] = self.get_texture(path='objects/Banco/ConcreteBench.jpg')
+        self.textures['banco2'] = self.get_texture(path='objects/Banco/ConcreteBench.jpg')
+        self.textures['banco3'] = self.get_texture(path='objects/Banco/ConcreteBench.jpg')
+        self.textures['banco4'] = self.get_texture(path='objects/Banco/ConcreteBench.jpg')
+        self.textures['arbol1'] = self.get_texture(path='objects/Arbol/10446_Palm_Tree_v1_Diffuse.jpg')
+        self.textures['arbol2'] = self.get_texture(path='objects/Arbol/10446_Palm_Tree_v1_Diffuse.jpg')
+        self.textures['arbol3'] = self.get_texture(path='objects/Arbol/10446_Palm_Tree_v1_Diffuse.jpg')
+        self.textures['arbol4'] = self.get_texture(path='objects/Arbol/10446_Palm_Tree_v1_Diffuse.jpg')
+        self.textures['arbol5'] = self.get_texture(path='objects/Arbol/10446_Palm_Tree_v1_Diffuse.jpg')
+        self.textures['arbol6'] = self.get_texture(path='objects/Arbol/10446_Palm_Tree_v1_Diffuse.jpg')
 
 
     def get_texture_cube(self, dir_path, ext='png'):

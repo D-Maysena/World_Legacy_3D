@@ -37,15 +37,28 @@ class GraphicsEngine:
         self.scene = Scene(self)
 
         # Cargar y reproducir sonido
-        self.sound = pg.mixer.Sound('Audios/Kanye.mp3')
-        self.sound.play()
+        self.sound = pg.mixer.Sound('Audios/ambiente.mp3')
+        self.sound.play(-1)  # Reproducir en bucle
 
     def check_events(self):
+        # Procesar eventos de Pygame
         for event in pg.event.get():
             if event.type == pg.QUIT or (event.type == pg.KEYDOWN and event.key == pg.K_ESCAPE):
                 self.mesh.destroy()
                 pg.quit()
                 sys.exit()
+            elif event.type == pg.KEYDOWN:
+                if event.key == pg.K_z:
+                    self.adjust_volume(-0.1)  # Disminuir el volumen
+                elif event.key == pg.K_x:
+                    self.adjust_volume(0.1) # Aumentar el volumen
+
+    def adjust_volume(self, change):
+        # Ajustar el volumen del sonido
+        volume = self.sound.get_volume() + change
+        volume = max(0.0, min(volume, 1.0))  # Limitar el volumen entre 0.0 y 1.0
+        self.sound.set_volume(volume) # Establecer el nuevo volumen
+        print(f"Volume set to: {volume}") # Imprime el volumen actual en la consola
 
     def render(self):
         self.ctx.clear(color=(0.1, 0.3, 0.2))
