@@ -1,0 +1,33 @@
+{
+  "created_at": "2024-06-10T14:08:53.273095",
+  "version": "0.1",
+  "mtllibs": [
+    "modelo.mtl"
+  ],
+  "vertex_buffers": [
+    {
+      "material": "Light01",
+      "vertex_format": "T2F_N3F_V3F",
+      "byte_offset": 0,
+      "byte_length": 23040
+    },
+    {
+      "material": "Light02",
+      "vertex_format": "T2F_N3F_V3F",
+      "byte_offset": 23040,
+      "byte_length": 27648
+    },
+    {
+      "material": "glass",
+      "vertex_format": "N3F_V3F",
+      "byte_offset": 50688,
+      "byte_length": 10368
+    },
+    {
+      "material": "material_diffuse",
+      "vertex_format": "T2F_N3F_V3F",
+      "byte_offset": 61056,
+      "byte_length": 1372800
+    }
+  ]
+}
