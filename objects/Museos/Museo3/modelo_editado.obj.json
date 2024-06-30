@@ -1,0 +1,117 @@
+{
+  "created_at": "2024-06-08T20:09:11.497632",
+  "version": "0.1",
+  "mtllibs": [
+    "museo3.mtl"
+  ],
+  "vertex_buffers": [
+    {
+      "material": "Black_concreete",
+      "vertex_format": "T2F_N3F_V3F",
+      "byte_offset": 0,
+      "byte_length": 76032
+    },
+    {
+      "material": "Black_concreete_0",
+      "vertex_format": "T2F_N3F_V3F",
+      "byte_offset": 76032,
+      "byte_length": 192
+    },
+    {
+      "material": "Black_floor_tiles",
+      "vertex_format": "T2F_N3F_V3F",
+      "byte_offset": 76224,
+      "byte_length": 192
+    },
+    {
+      "material": "Ceramic_Black_Tiles_English",
+      "vertex_format": "T2F_N3F_V3F",
+      "byte_offset": 76416,
+      "byte_length": 22272
+    },
+    {
+      "material": "Material.001",
+      "vertex_format": "T2F_N3F_V3F",
+      "byte_offset": 98688,
+      "byte_length": 192
+    },
+    {
+      "material": "Material.002",
+      "vertex_format": "T2F_N3F_V3F",
+      "byte_offset": 98880,
+      "byte_length": 192
+    },
+    {
+      "material": "Material.003",
+      "vertex_format": "T2F_N3F_V3F",
+      "byte_offset": 99072,
+      "byte_length": 192
+    },
+    {
+      "material": "Material.004",
+      "vertex_format": "T2F_N3F_V3F",
+      "byte_offset": 99264,
+      "byte_length": 192
+    },
+    {
+      "material": "Material.005",
+      "vertex_format": "T2F_N3F_V3F",
+      "byte_offset": 99456,
+      "byte_length": 192
+    },
+    {
+      "material": "Material.006",
+      "vertex_format": "T2F_N3F_V3F",
+      "byte_offset": 99648,
+      "byte_length": 192
+    },
+    {
+      "material": "Material.007",
+      "vertex_format": "T2F_N3F_V3F",
+      "byte_offset": 99840,
+      "byte_length": 192
+    },
+    {
+      "material": "Material.008",
+      "vertex_format": "T2F_N3F_V3F",
+      "byte_offset": 100032,
+      "byte_length": 192
+    },
+    {
+      "material": "Material.009",
+      "vertex_format": "T2F_N3F_V3F",
+      "byte_offset": 100224,
+      "byte_length": 192
+    },
+    {
+      "material": "Material.010",
+      "vertex_format": "T2F_N3F_V3F",
+      "byte_offset": 100416,
+      "byte_length": 192
+    },
+    {
+      "material": "Material.011",
+      "vertex_format": "T2F_N3F_V3F",
+      "byte_offset": 100608,
+      "byte_length": 192
+    },
+    {
+      "material": "Material.012",
+      "vertex_format": "T2F_N3F_V3F",
+      "byte_offset": 100800,
+      "byte_length": 192
+    },
+    {
+      "material": "Material.013",
+      "vertex_format": "T2F_N3F_V3F",
+      "byte_offset": 100992,
+      "byte_length": 192
+    },
+    {
+      "material": "Material.014",
+      "vertex_format": "T2F_N3F_V3F",
+      "byte_offset": 101184,
+      "byte_length": 192
+    }
+  ]
+}
