@@ -57,6 +57,10 @@ class Scene:
         add(Arbol5(app, pos=(-68, -1, 1)))
         add(Arbol6(app, pos=(68, -1, 1)))
         
+        
+        add(Castillo(app, pos=(45, -1, -40)))
+        add(Columpio(app, pos=(-50, -1, -40)))
+        add(Mujer(app, pos=(8, -1, 8)))
 
         # Add lights
         self.add_light(self.app.light)
