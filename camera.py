@@ -41,8 +41,7 @@ class Camera:
         # Definir la lista de modelos con sus posiciones y tamaños
         models = [
             {'position': (20, -10), 'size': (8, 8)},
-            {'position': (0, -5), 'size': (2, 2)},
-            
+            {'position': (0, -5), 'size': (2, 2)}, 
         ]
                 
         self.hexagon_radius1 = 25.8  # Radio del segundo hexágono
@@ -55,112 +54,7 @@ class Camera:
       
         # Inicializar Collisions con la lista de modelos
         self.collisions = Collisions(self, models)
-        self.dentro = True
-        self.fuera = True
-    
-    def verifyGrande(self):
-        vertices = ([
-            [44.1048, 76.7512],
-            
-            [-44.4962, 76.6076],
-            
-            [-88.6649, -0.123909],
-            
-            [-44.2154, -76.8449],
-            
-            [44.4397, -76.5908],
-            
-            [88.6445, 0.0905567],
-            
-            #AFUERA
-            #1
-            #[82.4833, -143.217],
-            #2
-            #[165.335, 0.0486343],
-            #3
-            #[82.5721, 143.146],
-            #4
-            #[-82.5137, 143.115],
-            #5
-            #[-165.287, 0.147995],
-            #6
-            #[-82.7653, -143.053],
-            
-            
-        ])
-
-        # Definir el punto a verificar
-        P = ([self.x, self.z])
-
-        # Función para verificar si un punto está dentro de un polígono
-        def is_point_in_polygonFuera(point, vertices):
-            n = len(vertices)
-            inside = False
-            x, z = point
-            p1x, p1z = vertices[0]
-            for i in range(n + 1):
-                p2x, p2z = vertices[i % n]
-                if z > min(p1z, p2z):
-                    if z <= max(p1z, p2z):
-                        if x <= max(p1x, p2x):
-                            if p1z != p2z:
-                                xinters = (z - p1z) * (p2x - p1x) / (p2z - p1z) + p1x
-                            if p1x == p2x or x <= xinters:
-                                inside = not inside
-                p1x, p1z = p2x, p2z
-            return inside
-
-        # Verificar si el punto está dentro del hexágono en el plano 'xz'
-        if is_point_in_polygonFuera(P, vertices):
-            return False
-        else:
-            return True
-        
-    def verifyPequeño(self):
-        verticesDentro = (
-            [            
-            #AFUERA
-            #1
-            [82.4833, -143.217],
-            #2
-            [165.335, 0.0486343],
-            #3
-            [82.5721, 143.146],
-            #4
-            [-82.5137, 143.115],
-            #5
-            [-165.287, 0.147995],
-            #6
-            [-82.7653, -143.053],
-        ])
-
-        # Definir el punto a verificar
-        P = ([self.x, self.z])
-
-        # Función para verificar si un punto está dentro de un polígono
-        def is_point_in_polygonDentro(point, vertices):
-            n = len(vertices)
-            inside = False
-            x, z = point
-            p1x, p1z = vertices[0]
-            for i in range(n + 1):
-                p2x, p2z = vertices[i % n]
-                if z > min(p1z, p2z):
-                    if z <= max(p1z, p2z):
-                        if x <= max(p1x, p2x):
-                            if p1z != p2z:
-                                xinters = (z - p1z) * (p2x - p1x) / (p2z - p1z) + p1x
-                            if p1x == p2x or x <= xinters:
-                                inside = not inside
-                p1x, p1z = p2x, p2z
-            return inside
-
-        # Verificar si el punto está dentro del hexágono en el plano 'xz'
-        if is_point_in_polygonDentro(P, verticesDentro):
-            return False
-        else:
-            return True  
-        
+        self.stateCamera = True # is true camera 1    
     
     def rotate(self):
         rel_x, rel_y = pg.mouse.get_rel()
@@ -186,131 +80,52 @@ class Camera:
         self.update_camera_vectors()
         self.m_view = self.get_view_matrix()       
     
-    def is_within_hexagon(self, x, z, radius, hexagon_pos):
-        # Determinar si el punto (x, z) está dentro del hexágono de radio `radius` en la posición `hexagon_pos`
-        hex_x, hex_z = hexagon_pos.x, hexagon_pos.y
-        for i in range(6):
-            angle1 = radians(60 * i)
-            angle2 = radians(60 * (i + 1))
-            x1, z1 = radius * cos(angle1), radius * sin(angle1)
-            x2, z2 = radius * cos(angle2), radius * sin(angle2)
-            if (x - x1 + hex_x) * (z2 - z1 + hex_z) - (z - z1 + hex_z) * (x2 - x1 + hex_x) > 0:
-                print("negra")
-                return False
-        print("presidente")
-        return True
-
-    def distance_to_hexagon(self, hexagon_pos, hexagon_radius):
-        # Calcular la distancia euclidiana entre la cámara y el hexágono en hexagon_pos con radio hexagon_radius
-        dist_x = self.position.x - hexagon_pos.x
-        dist_z = self.position.z - hexagon_pos.y
-        distance = sqrt(dist_x * dist_x + dist_z * dist_z)
-        return distance
 
 
     def move(self):
+        
         velocity = SPEED * self.app.delta_time
         keys = pg.key.get_pressed()
-    
+        validate = self.verifyGrande() is not True and self.verifyPequeño() if not self.stateCamera else self.verifyGrande()
+        #print(self.verifyGrande() is not True)
+        print(self.position)
+        
         if keys[pg.K_w]:
-            self.z = self.position.z + self.forward.z * velocity
-            self.x = self.position.x + self.forward.x * velocity
-            if self.collisions.check_limits():
-                get = self.verifyPequeño()
-                get2 = self.verifyGrande()
-                print(get2)
-                print("primero")
-                print(get)
-                if (self.verifyGrande() and not self.verifyPequeño()) and (self.verifyGrande() or self.verifyPequeño()):
-                    self.position.z = self.z
-                    self.position.x = self.x
-                    # Imprimir distancia y radio del hexágono más cercano
-                    distance2 = self.distance_to_hexagon(self.hexagon_pos2, self.hexagon_radius2)
-                    print(f"Distancia al segundo hexágono: {distance2}, Radio: {self.hexagon_radius2}")
-                if (not self.verifyGrande() and not self.verifyPequeño()) and ( self.verifyGrande() or self.verifyPequeño()):
-                        self.position.z = self.z
-                        self.position.x = self.x
-            # if self.collisions.check_limits():
-            #     te= self.verifyPequeño()
-            #     te2=self.verifyGrande()
-            #     print(te)
-            #     print("yeyp")
-            #     print(te2)
+            self.z = self.position[2] + self.forward[2] * velocity
+            self.x = self.position[0] + self.forward[0] * velocity
+            if validate and self.collisions.check_limits():
+                self.position[2] = self.z
+                self.position[0] = self.x
                 
-            #     if not (self.verifyPequeño() or self.verifyGrande()):
-            #         print("aquyi")
-            #         get = self.verifyPequeño()
-            #         self.position.z = self.z
-            #         self.position.x = self.x
-            #         # Imprimir distancia y radio del hexágono más cercano
-            #         distance2 = self.distance_to_hexagon(self.hexagon_pos2, self.hexagon_radius2)
-            #         print(f"Distancia al segundo hexágono: {distance2}, Radio: {self.hexagon_radius2}")          
-                
-        elif keys[pg.K_s]:
-            self.z = self.position.z - self.forward.z * velocity
-            self.x = self.position.x - self.forward.x * velocity
-            if self.collisions.check_limits():
-                get = self.verifyPequeño()
-                get2 = self.verifyGrande()
-                print(get2)
-                print("primero")
-                print(get)
-                if (self.verifyGrande() and not self.verifyPequeño()) and (self.verifyGrande() or self.verifyPequeño()):
-                    self.dentro = False
-                    self.position.z = self.z
-                    self.position.x = self.x
-                    # Imprimir distancia y radio del hexágono más cercano
-                    distance2 = self.distance_to_hexagon(self.hexagon_pos2, self.hexagon_radius2)
-                    print(f"Distancia al segundo hexágono: {distance2}, Radio: {self.hexagon_radius2}")
-                if (not self.verifyGrande() and not self.verifyPequeño()) and self.dentro:
-                        self.afuera = False
-                        
-                        self.position.z = self.z
-                        self.position.x = self.x
-                           
-        elif keys[pg.K_a]:
-            self.x = self.position.x - self.right.x * velocity
-            self.z = self.position.z - self.right.z * velocity
-            if self.collisions.check_limits():
-                get = self.verifyPequeño()
-                get2 = self.verifyGrande()
-                print(get2)
-                print("primero")
-                print(get)
-                if (self.verifyGrande() and not self.verifyPequeño()) and (self.verifyGrande() or self.verifyPequeño()):
-                    self.dentro = False
-                    self.position.z = self.z
-                    self.position.x = self.x
-                    # Imprimir distancia y radio del hexágono más cercano
-                    distance2 = self.distance_to_hexagon(self.hexagon_pos2, self.hexagon_radius2)
-                    print(f"Distancia al segundo hexágono: {distance2}, Radio: {self.hexagon_radius2}")
-                if (not self.verifyGrande() and not self.verifyPequeño()) and self.dentro:
-                        self.afuera = False
-                        
-                        self.position.z = self.z
-                        self.position.x = self.x
-                
-        elif keys[pg.K_d]:
-            self.x = self.position.x + self.right.x * velocity
-            self.z = self.position.z + self.right.z * velocity
-            if self.collisions.check_limits():
-                get = self.verifyPequeño()
-                get2 = self.verifyGrande()
-                print(get2)
-                print("primero")
-                print(get)
-                if (self.verifyGrande() and not self.verifyPequeño()) and (self.verifyGrande() or self.verifyPequeño()):
-                    self.dentro = False
-                    self.position.z = self.z
-                    self.position.x = self.x
-                    # Imprimir distancia y radio del hexágono más cercano
-                    distance2 = self.distance_to_hexagon(self.hexagon_pos2, self.hexagon_radius2)
-                    print(f"Distancia al segundo hexágono: {distance2}, Radio: {self.hexagon_radius2}")
-                if (not self.verifyGrande() and not self.verifyPequeño()) and self.dentro:
-                        self.afuera = False
-                        
-                        self.position.z = self.z
-                        self.position.x = self.x
+        if keys[pg.K_s]:
+            self.z = self.position[2] - self.forward[2] * velocity
+            self.x = self.position[0] - self.forward[0] * velocity
+            if validate and self.collisions.check_limits():
+                self.position[2] = self.z
+                self.position[0] = self.x
+        
+        if keys[pg.K_a]:
+            self.x = self.position[0] - self.right[0] * velocity
+            self.z = self.position[2] - self.right[2] * velocity
+            if validate and self.collisions.check_limits(): 
+                self.position[0] = self.x
+                self.position[2] = self.z
+        
+        if keys[pg.K_d]:
+            self.x = self.position[0] + self.right[0] * velocity
+            self.z = self.position[2] + self.right[2] * velocity
+            if validate and self.collisions.check_limits():
+                self.position[0] = self.x
+                self.position[2] = self.z
+        
+        if keys[pg.K_1]:
+            self.stateCamera = False
+            self.position = glm.vec3(-9.65, 10, -128.883)
+        if keys[pg.K_2]:
+            self.stateCamera = True
+            self.position = glm.vec3(0, 10, 0)
+
+
                 
         # La matriz de vista se encarga de definir la posición y orientación de la cámara en el espacio 3D
     def get_view_matrix(self):
@@ -333,3 +148,80 @@ class Camera:
         #NEAR: distancia desde la cámara al plano de recorte más cercano 
         #FAR: distancia desde la cámara al plano de recorte más lejano
         return glm.perspective(glm.radians(FOV), self.aspect_radio, NEAR, FAR)
+    
+    def verifyGrande(self):
+        vertices = ([
+            [-43.8833, -76.0611 ],    
+            [43.8734, -76.213],        
+            
+            [88.1478, 0.119104],    
+                
+            [43.8008, 76.1551],    
+            [-44.1507, 76.1202],
+            
+            [-87.9573, -0.117065]])
+        
+        # Definir el punto a verificar
+        P = ([self.x, self.z])
+
+        # Función para verificar si un punto está dentro de un polígono
+        def is_point_in_polygonFuera(point, vertices):
+            n = len(vertices)
+            inside = False
+            x, z = point
+            p1x, p1z = vertices[0]
+            for i in range(n + 1):
+                p2x, p2z = vertices[i % n]
+                if z > min(p1z, p2z):
+                    if z <= max(p1z, p2z):
+                        if x <= max(p1x, p2x):
+                            if p1z != p2z:
+                                xinters = (z - p1z) * (p2x - p1x) / (p2z - p1z) + p1x
+                            if p1x == p2x or x <= xinters:
+                                inside = not inside
+                p1x, p1z = p2x, p2z
+            return inside
+
+        # Verificar si el punto está dentro del hexágono en el plano 'xz'
+        if is_point_in_polygonFuera(P, vertices):
+            return True
+        else:
+            return False
+
+    def verifyPequeño(self):
+        verticesDentro = (
+            [
+                [82.7697, -143.536],
+                [166.019, 0.0909767],
+                  
+                [82.9028, 143.642],
+                
+                [-82.9764, 143.754],          
+                [-165.67, -0.0152953],
+                
+                [-82.7932, -143.398],
+            ])
+
+        P = ([self.x, self.z])
+        def is_point_in_polygonDentro(point, vertices):
+            n = len(vertices)
+            inside = False
+            x, z = point
+            p1x, p1z = vertices[0]
+            for i in range(n + 1):
+                p2x, p2z = vertices[i % n]
+                if z > min(p1z, p2z):
+                    if z <= max(p1z, p2z):
+                        if x <= max(p1x, p2x):
+                            if p1z != p2z:
+                                xinters = (z - p1z) * (p2x - p1x) / (p2z - p1z) + p1x
+                            if p1x == p2x or x <= xinters:
+                                inside = not inside
+                p1x, p1z = p2x, p2z
+            return inside
+
+        # Verificar si el punto está dentro del hexágono en el plano 'xz'
+        if is_point_in_polygonDentro(P, verticesDentro):
+            return True
+        else:
+            return False
