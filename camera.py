@@ -111,6 +111,17 @@ class Camera:
                 self.position[0] = self.x
                 self.position[2] = self.z
                 
+        # Establece los límites de la coordenada y
+        min_y = 5.5  # Altura mínima permitida
+        max_y = 6.0  # Altura máxima permitida
+        
+        # Limitar el movimiento de la camara en Y
+        if self.position.y < min_y:
+            self.position.y = min_y
+        elif self.position.y > max_y:
+            self.position.y = max_y
+            
+                
     # La matriz de vista se encarga de definir la posición y orientación de la cámara en el espacio 3D
     def get_view_matrix(self):
         #Para encontrar la matriz usamos la función lookat, esta recibe la posición de la cámara

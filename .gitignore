@@ -6,3 +6,5 @@ objects/coliseo/
 objects/pyramid/
 objects/statue/
 objects/torre/
+__pycache__/
+
