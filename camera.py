@@ -32,13 +32,19 @@ class Camera:
         
         #matriz de proyeccion
         self.m_proj = self.get_projection_matrix() 
-        self.Limits = glm.vec2(100, -300)
+        self.Limits = glm.vec2(300, -300)   #Seccion de desplazamiento
         self.x = 0
         self.z = 0
         # Definir la lista de modelos con sus posiciones y tamaños
         models = [
-            {'position': (20, -10), 'size': (8, 8)},
-            {'position': (0, -5), 'size': (2, 2)},
+            {'position': (25, -150), 'size': (6, 6)},   #Coliseo
+            {'position': (-33, 130), 'size': (5, 5)},   #Eiffel
+            {'position': (-126, 60), 'size': (4, 4)},   #PizzaTower
+            {'position': (118, -80), 'size': (7, 7)},   #Catedral
+            {'position': (-33, -150), 'size': (4, 4)},  #Estatua (Esfinge)
+            {'position': (-125, -80), 'size': (5, 5)},  #Estatua2 (Michelangelo)
+            {'position': (116, 60), 'size': (4, 4)},    #BigBen
+            {'position': (25, 130), 'size': (5, 5)},    #Moai
         ]
 
         # Inicializar Collisions con la lista de modelos
@@ -111,6 +117,10 @@ class Camera:
                 self.position[0] = self.x
                 self.position[2] = self.z
                 
+        # if keys[pg.K_q]:
+        #     self.position += self.up * velocity    
+        # if keys[pg.K_e]:
+        #     self.position -= self.up * velocity
         # Establece los límites de la coordenada y
         min_y = 5.5  # Altura mínima permitida
         max_y = 6.0  # Altura máxima permitida
@@ -121,7 +131,6 @@ class Camera:
         elif self.position.y > max_y:
             self.position.y = max_y
             
-                
     # La matriz de vista se encarga de definir la posición y orientación de la cámara en el espacio 3D
     def get_view_matrix(self):
         #Para encontrar la matriz usamos la función lookat, esta recibe la posición de la cámara
