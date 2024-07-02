@@ -6,6 +6,7 @@ from camera import Camera
 from light import Light, AdditionalLight, AdditionalLight2
 from mesh import Mesh
 from scene import Scene
+from audios import AudioManager
 
 class GraphicsEngine:
     def __init__(self, win_size=(900, 650)):
@@ -35,6 +36,9 @@ class GraphicsEngine:
         self.camera = Camera(self)
         self.mesh = Mesh(self)
         self.scene = Scene(self)
+        
+        # Audio Manager
+        self.audio_manager = AudioManager(self.camera)
 
         # Cargar y reproducir sonido
         self.sound = pg.mixer.Sound('Audios/ambiente.mp3')
@@ -49,9 +53,9 @@ class GraphicsEngine:
                 sys.exit()
             elif event.type == pg.KEYDOWN:
                 if event.key == pg.K_z:
-                    self.adjust_volume(-0.1)  # Disminuir el volumen
+                    self.audio_manager.adjust_volume(-0.1)  # Disminuir el volumen
                 elif event.key == pg.K_x:
-                    self.adjust_volume(0.1) # Aumentar el volumen
+                    self.audio_manager.adjust_volume(0.1) # Aumentar el volumen
 
     def adjust_volume(self, change):
         # Ajustar el volumen del sonido
@@ -72,6 +76,7 @@ class GraphicsEngine:
         while True:
             self.get_time()
             self.check_events()
+            self.audio_manager.check_proximity()  # Añadir la verificación de proximidad
             self.camera.update()
             self.render()
             self.delta_time = self.clock.tick(60)
@@ -79,6 +84,3 @@ class GraphicsEngine:
 if __name__ == '__main__':
     app = GraphicsEngine()
     app.run()
-
-
-
