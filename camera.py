@@ -9,7 +9,8 @@ FOV = 50 #grados
 NEAR = 0.1
 FAR = 1000
 #Velocidad de la cámara
-SPEED = 0.02
+
+SPEED = 0.04
 SENSITIVITY = 0.02
 
 class Camera:
@@ -40,22 +41,23 @@ class Camera:
         self.z = 0
         # Definir la lista de modelos con sus posiciones y tamaños
         models = [
-            {'position': (25, -150), 'size': (6, 6)},   #Coliseo
-            {'position': (-33, 130), 'size': (5, 5)},   #Eiffel
+
+            {'position': (26, -136), 'size': (6, 6)},   #Coliseo
+            {'position': (-33, 137), 'size': (5, 5)},   #Eiffel
             {'position': (-126, 60), 'size': (4, 4)},   #PizzaTower
-            {'position': (118, -80), 'size': (7, 7)},   #Catedral
-            {'position': (-33, -150), 'size': (4, 4)},  #Estatua (Esfinge)
-            {'position': (-125, -80), 'size': (5, 5)},  #Estatua2 (Michelangelo)
-            {'position': (116, 60), 'size': (4, 4)},    #BigBen
-            {'position': (25, 130), 'size': (5, 5)},    #Moai
+            {'position': (116, -73), 'size': (7, 7)},   #Catedral
+            {'position': (-39, -136), 'size': (4, 4)},  #Estatua (Esfinge)
+            {'position': (-111, -81), 'size': (5, 5)},  #Estatua2 (Michelangelo)
+            {'position': (120, 63), 'size': (4, 4)},    #BigBen
+            {'position': (25, 136), 'size': (5, 5)},    #Moai
             
-             # Elementos fuera del museo
+            # Elementos fuera del museo
             {'position': (0, 0), 'size': (8, 8)},    #Venus de Milo
-            {'position': (-4, 62), 'size': (14, 14)},  #Banco 1
-            {'position': (-4, -82), 'size': (14, 14)}, #Banco 2
-            {'position': (60, 25), 'size': (14, 14)},  #Banco 3
-            {'position': (-68, 25), 'size': (14, 14)}, #Banco 4
-            
+            {'position': (-4, 73), 'size': (14, 14)},  #Banco 1
+            {'position': (-4, -73), 'size': (14, 14)}, #Banco 2
+            {'position': (69, 27), 'size': (14, 14)},  #Banco 3
+            {'position': (-70, 25), 'size': (14, 14)}, #Banco 4
+
             {'position': (40, 50), 'size': (5, 5)},     #Arbol 1
             {'position': (-40, 50), 'size': (5, 5)},    #Arbol 2
             {'position': (-35, -68), 'size': (5, 5)},   #Arbol 3
@@ -64,21 +66,23 @@ class Camera:
             {'position': (68, 1), 'size': (5, 5)},      #Arbol 6 
             
             {'position': (45, -40), 'size': (30, 30)},    #Castillo
-            {'position': (-50, -40), 'size': (5, 5)},     #Columpio
-            {'position': (8, -8), 'size': (5, 5)},        #Mujer 
-
+            {'position': (-50, -40), 'size': (15, 30)},   #Columpio
+            {'position': (8, 8), 'size': (5, 5)},      #Mujer 
+                 
         ]
+      
         self.hexagon_radius1 = 25.8  # Radio del segundo hexágono
         self.hexagon_pos1 = glm.vec2(0, 0)  # Posición del segundo hexágono        
                 
         self.hexagon_radius2 = 30  # Radio del segundo hexágono
         self.hexagon_pos2 = glm.vec2(0, 0)  # Posición del segundo hexágono
         
-        # Límites del área en la que la cámara puede moverse
-    
+            # Límites del área en la que la cámara puede moverse
+      
         # Inicializar Collisions con la lista de modelos
         self.collisions = Collisions(self, models)
         self.stateCamera = True # is true camera 1    
+
 
     
     def rotate(self):
@@ -105,9 +109,7 @@ class Camera:
         self.update_camera_vectors()
         self.m_view = self.get_view_matrix()       
 
-
     def move(self):
-        
         velocity = SPEED * self.app.delta_time
         keys = pg.key.get_pressed()
         validate = self.verifyGrande() is not True and self.verifyPequeño() if not self.stateCamera else self.verifyGrande()
@@ -162,9 +164,9 @@ class Camera:
             self.position.y = min_y
         elif self.position.y > max_y:
             self.position.y = max_y
-
-                
+        
         # La matriz de vista se encarga de definir la posición y orientación de la cámara en el espacio 3D
+
     def get_view_matrix(self):
         #Para encontrar la matriz usamos la función lookat, esta recibe la posición de la cámara
         # hacia donde esta viendo (en este caso ella ve al centro), y la orientación en el eje y a través de up
@@ -262,3 +264,4 @@ class Camera:
             return True
         else:
             return False
+

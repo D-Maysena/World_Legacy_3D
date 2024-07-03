@@ -23,25 +23,26 @@ class Scene:
         for x in range(-n, n, s):
             for z in range(-n, n, s):
                 add(Cube(app, pos=(x, -s, z)))
-        add(Coliseo(app, pos=(25, 4.5, -150), scale=(0.00035, 0.00035, 0.00035)))
-        add(Eiffel(app, pos=(-33, 4, 130), scale=(0.00030, 0.00030, 0.00030)))
-        add(PisaTower(app, pos=(-126, 5, 60)))
-        add(Catedral(app, pos=(118, 4, -80)))
-        add(Estatua(app, pos=(-33, 4, -150)))
-        add(Estatua2(app, pos=(-125, 4, -80)))
-        add(Bigben(app, pos=(116, 4, 60)))
-        add(moai(app, pos=(25, 4, 130)))
+        add(Coliseo(app, pos=(26, 5.5, -136), scale=(0.00035, 0.00035, 0.00035)))
+        add(Eiffel(app, pos=(-33, 5, 137), scale=(0.00030, 0.00030, 0.00030)))
+        add(PisaTower(app, pos=(-126, 6, 60)))
+        add(Catedral(app, pos=(116, 5, -73)))
+        add(Estatua(app, pos=(-39, 5, -136)))
+        add(Estatua2(app, pos=(-111, 5, -81)))
+        add(Bigben(app, pos=(120, 5, 63)))
+        add(moai(app, pos=(25, 5, 136)))
         add(museo4(app,pos=(0,0,0), scale=(0.2,0.2,0.2)))
-       
+        
+
         #Pedestales
-        add(Pedestal_bigben(app, pos=(116, -1, 60), rot=(-90,0, 180)))
-        add(Pedestal_eiffel(app, pos=(-33, -1, 130)))
-        add(Pedestal_coliseo(app, pos=(25, -1, -150)))
-        add(Pedestal_pisatower(app, pos=(-126, -1, 60)))
-        add(Pedestal_catedral(app, pos=(118, -1, -80)))
-        add(Pedestal_estatua(app, pos=(-33, -1, -150)))
-        add(Pedestal_estatua2(app, pos=(-125, -1, -80)))
-        add(Pedestal_moai(app, pos=(25, -1, 130)))
+        add(Pedestal_bigben(app, pos=(120, 0, 63), rot=(-90,0, 180)))
+        add(Pedestal_eiffel(app, pos=(-33, 0, 137)))
+        add(Pedestal_coliseo(app, pos=(26, 0, -136)))
+        add(Pedestal_pisatower(app, pos=(-126, 0, 60)))
+        add(Pedestal_catedral(app, pos=(116, 0, -73)))
+        add(Pedestal_estatua(app, pos=(-39, 0, -136)))
+        add(Pedestal_estatua2(app, pos=(-111, 0, -81)))
+        add(Pedestal_moai(app, pos=(25, 0, 136)))
         
         #Ambientes
         add(Estatua3(app, pos=(0, -1, 0)))
@@ -49,7 +50,8 @@ class Scene:
         add(Banco2(app, pos=(-4, -1, -73)))
         add(Banco3(app, pos=(69, -1, 27)))
         add(Banco4(app, pos=(-70, -1, 25)))
-        
+
+
         
         add(Arbol1(app, pos=(40, -1, 50)))
         add(Arbol2(app, pos=(-40, -1, 50)))
@@ -62,7 +64,7 @@ class Scene:
         add(Castillo(app, pos=(45, -1, -40)))
         add(Columpio(app, pos=(-50, -1, -40)))
         add(Mujer(app, pos=(8, -1, 8)))
-
+ 
         # Add lights
         self.add_light(self.app.light)
         self.add_light(AdditionalLight(position=(0, -3, -10), color=(1.0, 0.0, 0.0)))

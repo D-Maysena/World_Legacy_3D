@@ -99,6 +99,7 @@ def play():
     app = GraphicsEngine()
     app.run()
 
+
 def options():
     while True:
         OPTIONS_MOUSE_POS = pygame.mouse.get_pos()

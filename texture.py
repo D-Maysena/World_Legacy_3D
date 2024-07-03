@@ -11,6 +11,7 @@ class Texture:
         self.textures[4] = self.get_texture(path='textures/alfombra2.png')
         self.textures[5] = self.get_texture(path='textures/alfombra3.png')
         self.textures[6] = self.get_texture(path='textures/cesped5.png')
+
         self.textures['eiffel'] = self.get_texture(path='objects/Eiffel/10067_Eiffel_Tower_v1_diffuse.JPG')
         self.textures['coliseo'] = self.get_texture(path='objects/Coliseo/10064_colosseum_diffuse.jpg')
         self.textures['pisatower'] = self.get_texture(path='objects/pisatower/10076_pisa_tower_v1_diffuse.jpg')
@@ -43,11 +44,12 @@ class Texture:
         self.textures['arbol4'] = self.get_texture(path='objects/Arbol/10446_Palm_Tree_v1_Diffuse.jpg')
         self.textures['arbol5'] = self.get_texture(path='objects/Arbol/10446_Palm_Tree_v1_Diffuse.jpg')
         self.textures['arbol6'] = self.get_texture(path='objects/Arbol/10446_Palm_Tree_v1_Diffuse.jpg')
-        
+
         
         self.textures['castillo'] = self.get_texture(path='objects/castillo/13020_Aquarium_Castle_diff.jpg')
         self.textures['columpio'] = self.get_texture(path='objects/columpio/ChildrenSwingSet.jpg')
         self.textures['mujer'] = self.get_texture(path='objects/mujer/10578_barbiedoll_diffuse.jpg')
+
 
 
     def get_texture_cube(self, dir_path, ext='png'):

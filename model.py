@@ -223,7 +223,7 @@ class Arbol6(ExtendedBaseModel):
     def __init__(self, app, vao_name='arbol6', tex_id='arbol6', 
                  pos=(0, 0, 0), rot=(-90,0,-240), scale=(0.03,0.03,0.03)):
         super().__init__(app, vao_name, tex_id, pos, rot, scale)
-        
+
 class Castillo(ExtendedBaseModel):
     def __init__(self, app, vao_name='castillo', tex_id='castillo', 
                  pos=(0, 0, 0), rot=(-90,0,-50), scale=(2,2,2)):

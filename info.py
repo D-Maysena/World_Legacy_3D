@@ -8,14 +8,14 @@ class InfoManager:
         self.camera = camera
         self.current_key = None
         self.positions = {
-            "Object_bigben": (116, -1, 60),
-            "Object_eiffel": (-33, -1, 130),
-            "Object_coliseo": (25, -1, -150),
-            "Object_pisatower": (-126, -1, 60),
-            "Object_catedral": (118, -1, -80),
-            "Object_esfinge": (-33, -1, -150),
-            "Object_david": (-125, -1, -80),
-            "Object_moai": (25, -1, 130)
+            "Object_bigben": (120, 0, 63),
+            "Object_eiffel": (-33, 0, 137),
+            "Object_coliseo": (26, 0, -136),
+            "Object_pisatower": (-126, 0, 60),
+            "Object_catedral": (116, 0, -73),
+            "Object_esfinge": (-39, 0, -136),
+            "Object_david": (-111, 0, -81),
+            "Object_moai": (25, 0, 136)
         }
         self.info = {
             "Object_bigben": (

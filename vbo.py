@@ -46,7 +46,7 @@ class VBO:
         self.vbos['mujer'] =  Mujer_VBO(ctx)
         
         
-        
+
     def destroy(self):
         [vbo.destroy() for vbo in self.vbos.values()]
 
