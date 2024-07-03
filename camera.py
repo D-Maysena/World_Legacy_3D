@@ -63,6 +63,7 @@ class Camera:
             {'position': (45, -40), 'size': (30, 30)},    #Castillo
             {'position': (-50, -40), 'size': (5, 5)},     #Columpio
             {'position': (8, -8), 'size': (5, 5)},        #Mujer 
+
         ]
 
         # Inicializar Collisions con la lista de modelos
@@ -134,7 +135,7 @@ class Camera:
             if self.Limits[0] > self.x > self.Limits[1] and self.Limits[0] > self.z > self.Limits[1] and bool_collisions:
                 self.position[0] = self.x
                 self.position[2] = self.z
-                
+
         # if keys[pg.K_q]:
         #     self.position += self.up * velocity    
         # if keys[pg.K_e]:
@@ -148,7 +149,7 @@ class Camera:
             self.position.y = min_y
         elif self.position.y > max_y:
             self.position.y = max_y
-            
+
     # La matriz de vista se encarga de definir la posición y orientación de la cámara en el espacio 3D
     def get_view_matrix(self):
         #Para encontrar la matriz usamos la función lookat, esta recibe la posición de la cámara
