@@ -133,6 +133,17 @@ class VAO:
             vbo=self.vbo.vbos['arbol6'])
         
         
+        self.vaos['castillo'] = self.get_vao(
+            program=self.program.programs['default'],
+            vbo=self.vbo.vbos['castillo'])
+        
+        self.vaos['columpio'] = self.get_vao(
+            program=self.program.programs['default'],
+            vbo=self.vbo.vbos['columpio'])
+        
+        self.vaos['mujer'] = self.get_vao(
+            program=self.program.programs['default'],
+            vbo=self.vbo.vbos['mujer'])
         
         #####################################################################################################
         
