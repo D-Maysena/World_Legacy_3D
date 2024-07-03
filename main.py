@@ -115,7 +115,10 @@ def options():
             "4. Presione D para ir a la izquierda",
             "5. Presione X para subir volumen",
             "6. Presione Z para bajar volumen",
-            "7. Presione Esc para salir del juego"
+            "7. Presione 1 para Entrar al Museo",
+            "8. Presione 2 para Salir del Museo",
+            
+            "9. Presione Esc para salir del juego"
         ]
         for i, line in enumerate(instructions):
             INSTRUCTION_TEXT = get_font(30).render(line, True, "Black")
