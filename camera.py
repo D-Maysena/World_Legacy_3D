@@ -45,6 +45,24 @@ class Camera:
             {'position': (-125, -80), 'size': (5, 5)},  #Estatua2 (Michelangelo)
             {'position': (116, 60), 'size': (4, 4)},    #BigBen
             {'position': (25, 130), 'size': (5, 5)},    #Moai
+            
+             # Elementos fuera del museo
+            {'position': (0, 0), 'size': (8, 8)},    #Venus de Milo
+            {'position': (-4, 62), 'size': (14, 14)},  #Banco 1
+            {'position': (-4, -82), 'size': (14, 14)}, #Banco 2
+            {'position': (60, 25), 'size': (14, 14)},  #Banco 3
+            {'position': (-68, 25), 'size': (14, 14)}, #Banco 4
+            
+            {'position': (40, 50), 'size': (5, 5)},     #Arbol 1
+            {'position': (-40, 50), 'size': (5, 5)},    #Arbol 2
+            {'position': (-35, -68), 'size': (5, 5)},   #Arbol 3
+            {'position': (27, -68), 'size': (5, 5)},    #Arbol 4
+            {'position': (-68, 1), 'size': (5, 5)},     #Arbol 5
+            {'position': (68, 1), 'size': (5, 5)},      #Arbol 6 
+            
+            {'position': (45, -40), 'size': (30, 30)},    #Castillo
+            {'position': (-50, -40), 'size': (5, 5)},     #Columpio
+            {'position': (8, -8), 'size': (5, 5)},        #Mujer 
         ]
 
         # Inicializar Collisions con la lista de modelos
