@@ -31,8 +31,8 @@ class Scene:
         add(Estatua2(app, pos=(-125, 4, -80)))
         add(Bigben(app, pos=(116, 4, 60)))
         add(moai(app, pos=(25, 4, 130)))
-        add(museo4(app,pos=(-4,-0.99,-10), scale=(0.2,0.2,0.2)))
-        
+        add(museo4(app,pos=(0,0,0), scale=(0.2,0.2,0.2)))
+       
         #Pedestales
         add(Pedestal_bigben(app, pos=(116, -1, 60), rot=(-90,0, 180)))
         add(Pedestal_eiffel(app, pos=(-33, -1, 130)))
@@ -45,10 +45,11 @@ class Scene:
         
         #Ambientes
         add(Estatua3(app, pos=(0, -1, 0)))
-        add(Banco1(app, pos=(-4, -1, 62)))
-        add(Banco2(app, pos=(-4, -1, -82)))
-        add(Banco3(app, pos=(60, -1, 25)))
-        add(Banco4(app, pos=(-68, -1, 25)))
+        add(Banco1(app, pos=(-4, -1, 73)))
+        add(Banco2(app, pos=(-4, -1, -73)))
+        add(Banco3(app, pos=(69, -1, 27)))
+        add(Banco4(app, pos=(-70, -1, 25)))
+        
         
         add(Arbol1(app, pos=(40, -1, 50)))
         add(Arbol2(app, pos=(-40, -1, 50)))

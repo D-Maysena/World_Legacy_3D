@@ -53,6 +53,7 @@ class GraphicsEngine:
 
         # Procesar eventos de Pygame
 
+
         for event in pg.event.get():
             if event.type == pg.QUIT or (event.type == pg.KEYDOWN and event.key == pg.K_ESCAPE):
                 self.mesh.destroy()
@@ -64,13 +65,13 @@ class GraphicsEngine:
                 elif event.key == pg.K_x:
                     self.audio_manager.adjust_volume(0.1) # Aumentar el volumen
 
+
     def adjust_volume(self, change):
         # Ajustar el volumen del sonido
         volume = self.sound.get_volume() + change
         volume = max(0.0, min(volume, 1.0))  # Limitar el volumen entre 0.0 y 1.0
         self.sound.set_volume(volume) # Establecer el nuevo volumen
         print(f"Volume set to: {volume}") # Imprime el volumen actual en la consola
-
 
     def render(self):
         self.ctx.clear(color=(0.1, 0.3, 0.2))
@@ -177,4 +178,5 @@ SCREEN = pygame.display.set_mode((1280, 720))
 pygame.display.set_caption("WORLD LEGACY 3D")
 BG = pygame.transform.scale(pygame.image.load("assets/world5.jpg"), (1280, 720))
 main_menu()
+
 

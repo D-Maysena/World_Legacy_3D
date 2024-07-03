@@ -2,7 +2,9 @@ import glm
 import pygame as pg
 from model import Eiffel
 from collisions import Collisions
-from math import sqrt
+from math import sqrt, cos, sin, radians
+
+
 FOV = 50 #grados
 NEAR = 0.1
 FAR = 1000
@@ -13,7 +15,7 @@ SENSITIVITY = 0.02
 class Camera:
     #Para poder simular una cámara necsitamos determinar la matriz de vista como 
     # la matriz de proyección
-    def __init__(self, app, position=(0,0,4), yaw=-90, pitch=0):
+    def __init__(self, app, position=(0,10,10), yaw=-90, pitch=0):
         self.app = app
         self.aspect_radio = app.WIN_SIZE[0] / app.WIN_SIZE[1]
         
@@ -26,7 +28,8 @@ class Camera:
         
         self.yaw = yaw
         self.pitch = pitch
-        
+        self.distance2 = 0  # Inicializar distance2 como variable de instancia
+
         #matriz de vista
         self.m_view = self.get_view_matrix()
         
@@ -65,9 +68,18 @@ class Camera:
             {'position': (8, -8), 'size': (5, 5)},        #Mujer 
 
         ]
-
+        self.hexagon_radius1 = 25.8  # Radio del segundo hexágono
+        self.hexagon_pos1 = glm.vec2(0, 0)  # Posición del segundo hexágono        
+                
+        self.hexagon_radius2 = 30  # Radio del segundo hexágono
+        self.hexagon_pos2 = glm.vec2(0, 0)  # Posición del segundo hexágono
+        
+        # Límites del área en la que la cámara puede moverse
+    
         # Inicializar Collisions con la lista de modelos
         self.collisions = Collisions(self, models)
+        self.stateCamera = True # is true camera 1    
+
     
     def rotate(self):
         rel_x, rel_y = pg.mouse.get_rel()
@@ -93,48 +105,49 @@ class Camera:
         self.update_camera_vectors()
         self.m_view = self.get_view_matrix()       
 
+
     def move(self):
+        
         velocity = SPEED * self.app.delta_time
         keys = pg.key.get_pressed()
-        print("posicion")
+        validate = self.verifyGrande() is not True and self.verifyPequeño() if not self.stateCamera else self.verifyGrande()
+        #print(self.verifyGrande() is not True)
         print(self.position)
+        
         if keys[pg.K_w]:
-            
             self.z = self.position[2] + self.forward[2] * velocity
             self.x = self.position[0] + self.forward[0] * velocity
-            
-            bool_collisions = self.collisions.check_limits()
-            if self.Limits[0] > self.z > self.Limits[1] and self.Limits[0] > self.x > self.Limits[1] and bool_collisions:
+            if validate and self.collisions.check_limits():
                 self.position[2] = self.z
                 self.position[0] = self.x
                 
         if keys[pg.K_s]:
             self.z = self.position[2] - self.forward[2] * velocity
             self.x = self.position[0] - self.forward[0] * velocity
-            bool_collisions = self.collisions.check_limits()
-            
-            if self.Limits[1] < self.z < self.Limits[0] and self.Limits[1] < self.x < self.Limits[0] and bool_collisions:
+            if validate and self.collisions.check_limits():
                 self.position[2] = self.z
                 self.position[0] = self.x
-                
+        
         if keys[pg.K_a]:
             self.x = self.position[0] - self.right[0] * velocity
             self.z = self.position[2] - self.right[2] * velocity
-            bool_collisions = self.collisions.check_limits()
-            
-            if self.Limits[1] < self.x < self.Limits[0] and self.Limits[1] < self.z < self.Limits[0] and bool_collisions:
+            if validate and self.collisions.check_limits(): 
                 self.position[0] = self.x
                 self.position[2] = self.z
-                
+        
         if keys[pg.K_d]:
-
             self.x = self.position[0] + self.right[0] * velocity
             self.z = self.position[2] + self.right[2] * velocity
-            bool_collisions = self.collisions.check_limits()
-            
-            if self.Limits[0] > self.x > self.Limits[1] and self.Limits[0] > self.z > self.Limits[1] and bool_collisions:
+            if validate and self.collisions.check_limits():
                 self.position[0] = self.x
                 self.position[2] = self.z
+        
+        if keys[pg.K_1]:
+            self.stateCamera = False
+            self.position = glm.vec3(-9.65, 10, -128.883)
+        if keys[pg.K_2]:
+            self.stateCamera = True
+            self.position = glm.vec3(0, 10, 10)
 
         # if keys[pg.K_q]:
         #     self.position += self.up * velocity    
@@ -150,7 +163,8 @@ class Camera:
         elif self.position.y > max_y:
             self.position.y = max_y
 
-    # La matriz de vista se encarga de definir la posición y orientación de la cámara en el espacio 3D
+                
+        # La matriz de vista se encarga de definir la posición y orientación de la cámara en el espacio 3D
     def get_view_matrix(self):
         #Para encontrar la matriz usamos la función lookat, esta recibe la posición de la cámara
         # hacia donde esta viendo (en este caso ella ve al centro), y la orientación en el eje y a través de up
@@ -171,3 +185,80 @@ class Camera:
         #NEAR: distancia desde la cámara al plano de recorte más cercano 
         #FAR: distancia desde la cámara al plano de recorte más lejano
         return glm.perspective(glm.radians(FOV), self.aspect_radio, NEAR, FAR)
+    
+    def verifyGrande(self):
+        vertices = ([
+            [-43.8833, -76.0611 ],    
+            [43.8734, -76.213],        
+            
+            [88.1478, 0.119104],    
+                
+            [43.8008, 76.1551],    
+            [-44.1507, 76.1202],
+            
+            [-87.9573, -0.117065]])
+        
+        # Definir el punto a verificar
+        P = ([self.x, self.z])
+
+        # Función para verificar si un punto está dentro de un polígono
+        def is_point_in_polygonFuera(point, vertices):
+            n = len(vertices)
+            inside = False
+            x, z = point
+            p1x, p1z = vertices[0]
+            for i in range(n + 1):
+                p2x, p2z = vertices[i % n]
+                if z > min(p1z, p2z):
+                    if z <= max(p1z, p2z):
+                        if x <= max(p1x, p2x):
+                            if p1z != p2z:
+                                xinters = (z - p1z) * (p2x - p1x) / (p2z - p1z) + p1x
+                            if p1x == p2x or x <= xinters:
+                                inside = not inside
+                p1x, p1z = p2x, p2z
+            return inside
+
+        # Verificar si el punto está dentro del hexágono en el plano 'xz'
+        if is_point_in_polygonFuera(P, vertices):
+            return True
+        else:
+            return False
+
+    def verifyPequeño(self):
+        verticesDentro = (
+            [
+                [82.7697, -143.536],
+                [166.019, 0.0909767],
+                  
+                [82.9028, 143.642],
+                
+                [-82.9764, 143.754],          
+                [-165.67, -0.0152953],
+                
+                [-82.7932, -143.398],
+            ])
+
+        P = ([self.x, self.z])
+        def is_point_in_polygonDentro(point, vertices):
+            n = len(vertices)
+            inside = False
+            x, z = point
+            p1x, p1z = vertices[0]
+            for i in range(n + 1):
+                p2x, p2z = vertices[i % n]
+                if z > min(p1z, p2z):
+                    if z <= max(p1z, p2z):
+                        if x <= max(p1x, p2x):
+                            if p1z != p2z:
+                                xinters = (z - p1z) * (p2x - p1x) / (p2z - p1z) + p1x
+                            if p1x == p2x or x <= xinters:
+                                inside = not inside
+                p1x, p1z = p2x, p2z
+            return inside
+
+        # Verificar si el punto está dentro del hexágono en el plano 'xz'
+        if is_point_in_polygonDentro(P, verticesDentro):
+            return True
+        else:
+            return False
