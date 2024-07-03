@@ -57,6 +57,7 @@ class GraphicsEngine:
                 elif event.key == pg.K_x:
                     self.audio_manager.adjust_volume(0.1) # Aumentar el volumen
 
+
     def adjust_volume(self, change):
         # Ajustar el volumen del sonido
         volume = self.sound.get_volume() + change
@@ -84,3 +85,4 @@ class GraphicsEngine:
 if __name__ == '__main__':
     app = GraphicsEngine()
     app.run()
+

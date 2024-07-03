@@ -224,6 +224,26 @@ class Arbol6(ExtendedBaseModel):
                  pos=(0, 0, 0), rot=(-90,0,-240), scale=(0.03,0.03,0.03)):
         super().__init__(app, vao_name, tex_id, pos, rot, scale)
 
+        
+class Castillo(ExtendedBaseModel):
+    def __init__(self, app, vao_name='castillo', tex_id='castillo', 
+                 pos=(0, 0, 0), rot=(-90,0,-50), scale=(2,2,2)):
+        super().__init__(app, vao_name, tex_id, pos, rot, scale)
+        
+        
+class Columpio(ExtendedBaseModel):
+    def __init__(self, app, vao_name='columpio', tex_id='columpio', 
+                 pos=(0, 0, 0), rot=(-90,0,-25), scale=(0.06,0.06,0.06)):
+        super().__init__(app, vao_name, tex_id, pos, rot, scale)  
+        
+        
+class Mujer(ExtendedBaseModel):
+    def __init__(self, app, vao_name='mujer', tex_id='mujer', 
+                 pos=(0, 0, 0), rot=(-90,0,-120), scale=(0.067,0.067,0.067)):
+        super().__init__(app, vao_name, tex_id, pos, rot, scale)      
+
+
+
 ###########################################################################################
         
 class cubo(ExtendedBaseModel):

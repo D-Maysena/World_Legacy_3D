@@ -41,6 +41,11 @@ class VBO:
         self.vbos['arbol5'] =  Arbol5_VBO(ctx)
         self.vbos['arbol6'] =  Arbol6_VBO(ctx)
         
+        self.vbos['castillo'] =  Castillo_VBO(ctx)
+        self.vbos['columpio'] =  Columpio_VBO(ctx)
+        self.vbos['mujer'] =  Mujer_VBO(ctx)
+        
+        
     def destroy(self):
         [vbo.destroy() for vbo in self.vbos.values()]
 
@@ -502,6 +507,49 @@ class Arbol6_VBO(BaseVBO):
         vertex_data = np.array(vertex_data, dtype='f4')
         return vertex_data
     
+    
+    
+class Castillo_VBO(BaseVBO):
+    def __init__(self, app):
+        super().__init__(app)
+        self.format = '2f 3f 3f'
+        self.attribs = ['in_texcoord_0', 'in_normal', 'in_position']
+
+    def get_vertex_data(self):
+        objs = pywavefront.Wavefront('objects/castillo/13020_Aquarium_Castle_v1_L1.obj', cache=True, parse=True)
+        obj = objs.materials.popitem()[1]
+        vertex_data = obj.vertices
+        vertex_data = np.array(vertex_data, dtype='f4')
+        return vertex_data    
+
+
+class Columpio_VBO(BaseVBO):
+    def __init__(self, app):
+        super().__init__(app)
+        self.format = '2f 3f 3f'
+        self.attribs = ['in_texcoord_0', 'in_normal', 'in_position']
+
+    def get_vertex_data(self):
+        objs = pywavefront.Wavefront('objects/columpio/10549_ChildrenSwingSet_v1-LoD2.obj', cache=True, parse=True)
+        obj = objs.materials.popitem()[1]
+        vertex_data = obj.vertices
+        vertex_data = np.array(vertex_data, dtype='f4')
+        return vertex_data   
+    
+    
+    
+class Mujer_VBO(BaseVBO):
+    def __init__(self, app):
+        super().__init__(app)
+        self.format = '2f 3f 3f'
+        self.attribs = ['in_texcoord_0', 'in_normal', 'in_position']
+
+    def get_vertex_data(self):
+        objs = pywavefront.Wavefront('objects/mujer/10578_barbiedoll_v1_L3.obj', cache=True, parse=True)
+        obj = objs.materials.popitem()[1]
+        vertex_data = obj.vertices
+        vertex_data = np.array(vertex_data, dtype='f4')
+        return vertex_data   
     
     
     ################################################################################
