@@ -133,8 +133,7 @@ class VAO:
             vbo=self.vbo.vbos['arbol6'])
         
         
-<<<<<<< HEAD
-=======
+
         self.vaos['castillo'] = self.get_vao(
             program=self.program.programs['default'],
             vbo=self.vbo.vbos['castillo'])
@@ -146,7 +145,7 @@ class VAO:
         self.vaos['mujer'] = self.get_vao(
             program=self.program.programs['default'],
             vbo=self.vbo.vbos['mujer'])
->>>>>>> origin/Rama_Rugby
+
         
         #####################################################################################################
         
