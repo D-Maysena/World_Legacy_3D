@@ -4,12 +4,12 @@ class Texture:
     def __init__(self, ctx):
         self.ctx = ctx
         self.textures = {}
-        self.textures[0] = self.get_texture(path='textures/box.jpg')
-        self.textures[1] = self.get_texture(path='textures/texture.jpg')
+        # self.textures[0] = self.get_texture(path='textures/box.jpg')
+        # self.textures[1] = self.get_texture(path='textures/texture.jpg')
         
-        self.textures[3] = self.get_texture(path='textures/alfombra1.png')
-        self.textures[4] = self.get_texture(path='textures/alfombra2.png')
-        self.textures[5] = self.get_texture(path='textures/alfombra3.png')
+        # self.textures[3] = self.get_texture(path='textures/alfombra1.png')
+        # self.textures[4] = self.get_texture(path='textures/alfombra2.png')
+        # self.textures[5] = self.get_texture(path='textures/alfombra3.png')
         self.textures[6] = self.get_texture(path='textures/cesped5.png')
 
         self.textures['eiffel'] = self.get_texture(path='objects/Eiffel/10067_Eiffel_Tower_v1_diffuse.JPG')
