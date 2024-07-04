@@ -27,6 +27,9 @@ World Legacy 3D consists of the creation of a 3D environment that recreates a vi
 
 ![](https://github.com/D-Maysena/World_Legacy_3D/blob/main/assets/vista2.png?raw=true)
 
+## 🔗 Links
+
+[![youtube](https://img.shields.io/badge/youtube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/watch?v=0E7KbIy0cIA)
 
 
 ## How to start
