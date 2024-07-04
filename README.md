@@ -27,9 +27,32 @@ World Legacy 3D consists of the creation of a 3D environment that recreates a vi
 
 ![](https://github.com/D-Maysena/World_Legacy_3D/blob/main/assets/vista2.png?raw=true)
 
+
+## how to use ?
+
+To rotate the camera, use the mouse, and to move, use the keyboard. These are the keys used:
+
+`⬆️ - W`
+
+`⬇️ - S`
+
+`➡️ - D`
+
+`⬅️ - A`
+
+`🔉 - Z`
+
+`🔊 - X`
+
+`📥 - 1`
+
+`📤 - 2`
+
+`🔙 - Esc`
+
 ## 🔗 Links
 
-[![youtube](https://img.shields.io/badge/youtube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/watch?v=0E7KbIy0cIA)
+[![youtube](https://img.shields.io/badge/youtube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/watch?v=mdKPVIcywxw)
 
 
 ## Installation
@@ -49,6 +72,10 @@ Inside the project folder, run:
 ```bash
 python main.py
 ```
+
+## Support
+
+For support, email worldlegacyd@gmail.com
 
 ## Authors
 
