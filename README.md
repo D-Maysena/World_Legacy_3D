@@ -7,9 +7,19 @@
 [![PyGlm](https://img.shields.io/badge/PyGlm-1.2.5,-green.svg?style=flat-square)](https://github.com/Zuzu-Typ/PyGLM/wiki)
 
 ## Description
-The project consists of a virtual tour of a museum where you can see some of the monuments that are part of the world heritage.
+World Legacy 3D consists of the creation of a 3D environment that recreates a virtual museum, whose main attractions are various world heritage sites, including iconic monuments and sculptures.
 
-We can find some of the following structures:
+## Monuments and sculptures:
+
+- Eiffel Tower
+- Big Ben
+- Saint Basil's Cathedral
+- Roman Colosseum
+- Statue of David by Michelangelo
+- Sphinx
+- Leaning Tower of Pisa
+- Moai Statue
+- Venus
 
 ![](https://media.sketchfab.com/models/d4b8a2555d964f749307892973d83ffe/thumbnails/f19dfe4c59764a6b948301678fe4fef6/1fceea781ab34c0a8629a5c0f8001b56.jpeg)
 
