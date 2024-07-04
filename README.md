@@ -52,7 +52,7 @@ To rotate the camera, use the mouse, and to move, use the keyboard. These are th
 
 ## 🔗 Links
 
-[![youtube](https://img.shields.io/badge/youtube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/watch?v=mdKPVIcywxw)
+[![youtube](https://img.shields.io/badge/youtube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://youtu.be/4oM9eWNu6S0?si=MappG5mxa6YxnYII)
 
 
 ## Installation
