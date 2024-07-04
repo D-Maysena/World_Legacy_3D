@@ -10,7 +10,7 @@ NEAR = 0.1
 FAR = 1000
 #Velocidad de la cámara
 
-SPEED = 0.04
+SPEED = 0.02
 SENSITIVITY = 0.02
 
 class Camera:

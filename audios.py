@@ -11,9 +11,9 @@ class AudioManager:
         self.sounds = {}
         self.load_sounds()  #Cargar los sonidos en un diccionario
         self.background_sound = pg.mixer.Sound('Audios/ambiente.mp3')  # Cargar el sonido de fondo
-        self.background_volume = 0.5  # Volumen inicial del sonido de fondo
+        self.background_volume = 0.3  # Volumen inicial del sonido de fondo
         self.proximity_volume = 1.0   # Volumen inicial del sonido de proximidad
-        self.default_background_volume = 0.5
+        self.default_background_volume = 0.3
         self.background_sound.set_volume(self.background_volume)
         self.background_sound.play(-1)  # Reproducir en bucle el sonido de fondo
 
