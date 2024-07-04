@@ -21,11 +21,11 @@ World Legacy 3D consists of the creation of a 3D environment that recreates a vi
 - Moai Statue
 - Venus
 
-![](https://media.sketchfab.com/models/d4b8a2555d964f749307892973d83ffe/thumbnails/f19dfe4c59764a6b948301678fe4fef6/1fceea781ab34c0a8629a5c0f8001b56.jpeg)
+![](https://github.com/D-Maysena/World_Legacy_3D/blob/main/assets/inicio.png?raw=true)
 
-![](https://dl.myminifactory.com/object-assets/579f9df8f4193/images/720X720-7a449c1ae87d98e64b243374362c2c8b9dfde693.jpg)
+![](https://github.com/D-Maysena/World_Legacy_3D/blob/main/assets/vista1.png?raw=true)
 
-![](https://fbi.cults3d.com/uploaders/14783729/illustration-file/6e2c3722-cf93-4f20-84b4-9787f4f145e6/720X720-towerofpisa.jpg)
+![](https://github.com/D-Maysena/World_Legacy_3D/blob/main/assets/vista2.png?raw=true)
 
 
 
