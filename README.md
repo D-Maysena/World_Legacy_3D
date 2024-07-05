@@ -56,7 +56,7 @@ To rotate the camera, use the mouse, and to move, use the keyboard. These are th
 
 ## Documentation
 
-[Documentation](https://linktodocumentation)
+[Documentation](https://github.com/D-Maysena/World_Legacy_3D/blob/main/documentation/World%20Legacy%203D.pdf)
 
 
 ## Installation
