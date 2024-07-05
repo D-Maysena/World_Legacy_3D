@@ -33,19 +33,14 @@ World Legacy 3D consists of the creation of a 3D environment that recreates a vi
 To rotate the camera, use the mouse, and to move, use the keyboard. These are the keys used:
 
 `⬆️ - W`
-
 `⬇️ - S`
-
 `➡️ - D`
-
 `⬅️ - A`
 
 `🔉 - Z`
-
 `🔊 - X`
 
 `📥 - 1`
-
 `📤 - 2`
 
 `🔙 - Esc`
@@ -56,7 +51,7 @@ To rotate the camera, use the mouse, and to move, use the keyboard. These are th
 
 ## Documentation
 
-[Documentation](https://github.com/D-Maysena/World_Legacy_3D/raw/main/documentation/World%20Legacy%203D.pdf)
+[Documentation (World legacy 3D)](https://github.com/D-Maysena/World_Legacy_3D/raw/main/documentation/World%20Legacy%203D.pdf)
 
 
 ## Installation
