@@ -79,7 +79,7 @@ For support, email worldlegacyd@gmail.com
 
 ## Authors
 
-- [@D-Maysena](https://github.com/D-Maysena)
-- [@EngelJB](https://github.com/EngelJB)
-- [@Rugby27](https://github.com/Rugby27)
-- [@LDHector](https://github.com/LDHector)
+- Darce Mairena Yasser José [@D-Maysena](https://github.com/D-Maysena)
+- Barahona Engel Jasmir [@EngelJB](https://github.com/EngelJB)
+- Burgos Silva Rugby Josue [@Rugby27](https://github.com/Rugby27)
+- Díaz Hernández Leonardo Rosalío [@LDHector](https://github.com/LDHector)
