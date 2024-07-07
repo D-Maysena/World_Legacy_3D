@@ -10,6 +10,13 @@ from scene import Scene
 from audios import AudioManager
 from button import Button
 from info import InfoManager  # Importar InfoManager
+import os
+
+# Define la función resource_path para obtener la ruta absoluta del archivo
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
+    return os.path.join(base_path, relative_path)
 
 class GraphicsEngine:
     def __init__(self, win_size=(1280, 720)):
@@ -42,18 +49,15 @@ class GraphicsEngine:
 
         # Audio Manager
         self.audio_manager = AudioManager(self.camera)
-        # Load and play sound
-        self.sound = pg.mixer.Sound('Audios/ambiente.mp3')
+        # Load and play sound using resource_path
+        sound_path = resource_path('Audios/ambiente.mp3')
+        self.sound = pg.mixer.Sound(sound_path)
         self.sound.play(-1)  # Loop the sound
 
         # Info Manager
         self.info_manager = InfoManager(self.camera)  # Inicializar InfoManager
 
     def check_events(self):
-
-        # Procesar eventos de Pygame
-
-
         for event in pg.event.get():
             if event.type == pg.QUIT or (event.type == pg.KEYDOWN and event.key == pg.K_ESCAPE):
                 self.mesh.destroy()
@@ -64,7 +68,6 @@ class GraphicsEngine:
                     self.audio_manager.adjust_volume(-0.1)  # Disminuir el volumen
                 elif event.key == pg.K_x:
                     self.audio_manager.adjust_volume(0.1) # Aumentar el volumen
-
 
     def adjust_volume(self, change):
         # Ajustar el volumen del sonido
@@ -87,18 +90,16 @@ class GraphicsEngine:
             self.check_events()
             self.audio_manager.check_proximity()  # Añadir la verificación de proximidad
             self.camera.update()
-
             self.info_manager.check_proximity()  # Llamar a check_proximity de InfoManager
             self.render()
             self.delta_time = self.clock.tick(60)
 
 def get_font(size): 
-    return pygame.font.Font("assets/font.ttf", size)
+    return pygame.font.Font(resource_path("assets/font.ttf"), size)
 
 def play():
     app = GraphicsEngine()
     app.run()
-
 
 def options():
     while True:
@@ -117,7 +118,6 @@ def options():
             "6. Presione Z para bajar volumen",
             "7. Presione 1 para Entrar al Museo",
             "8. Presione 2 para Salir del Museo",
-            
             "9. Presione Esc para salir del juego"
         ]
         for i, line in enumerate(instructions):
@@ -148,11 +148,11 @@ def main_menu():
         MENU_TEXT = get_font(100).render("WORLD LEGACY", True, "#b68f40")
         MENU_RECT = MENU_TEXT.get_rect(center=(640, 100))
 
-        PLAY_BUTTON = Button(image=pygame.image.load("assets/Play Rect.png"), pos=(640, 250), 
+        PLAY_BUTTON = Button(image=pygame.image.load(resource_path("assets/Play Rect.png")), pos=(640, 250), 
                             text_input="ENTRAR", font=get_font(75), base_color="#d7fcd4", hovering_color="White")
-        OPTIONS_BUTTON = Button(image=pygame.image.load("assets/Options Rect.png"), pos=(640, 400), 
+        OPTIONS_BUTTON = Button(image=pygame.image.load(resource_path("assets/Options Rect.png")), pos=(640, 400), 
                             text_input="AYUDA", font=get_font(75), base_color="#d7fcd4", hovering_color="White")
-        QUIT_BUTTON = Button(image=pygame.image.load("assets/Quit Rect.png"), pos=(640, 550), 
+        QUIT_BUTTON = Button(image=pygame.image.load(resource_path("assets/Quit Rect.png")), pos=(640, 550), 
                             text_input="SALIR", font=get_font(75), base_color="#d7fcd4", hovering_color="White")
 
         SCREEN.blit(MENU_TEXT, MENU_RECT)
@@ -180,7 +180,5 @@ def main_menu():
 pygame.init()
 SCREEN = pygame.display.set_mode((1280, 720))
 pygame.display.set_caption("WORLD LEGACY 3D")
-BG = pygame.transform.scale(pygame.image.load("assets/world5.jpg"), (1280, 720))
+BG = pygame.transform.scale(pygame.image.load(resource_path("assets/world5.jpg")), (1280, 720))
 main_menu()
-
-
